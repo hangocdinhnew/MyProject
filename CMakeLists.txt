@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.20.0)
-
+# Set Generator and build type
+set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
+set(CMAKE_GENERATOR "Ninja")
+# Set Project Name and Version 
 project(
     MyProject
     VERSION 1.0.0
@@ -7,7 +11,6 @@ project(
 )
 
 # Build type and options
-set(CMAKE_BUILD_TYPE Release)
 #ADD SOURCES
 set(MyProject_DIR_ROOT ${CMAKE_CURRENT_LIST_DIR})
 set(MyProject_DIR_SRC "${MyProject_DIR_ROOT}/src")
