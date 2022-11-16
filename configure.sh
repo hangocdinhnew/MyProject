@@ -3,5 +3,5 @@
 cmake -B build -G "Ninja";
 cd build;
 ninja;
-cd ..
-echo "Building done!";
+cd ..;
+echo "Building done!"
