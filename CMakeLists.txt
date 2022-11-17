@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.20.0)
 # Set Generator and build type
 set(CMAKE_BUILD_TYPE Release)
-set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
 set(CMAKE_GENERATOR "Ninja")
 # Set Project Name and Version 
 project(
