@@ -22,7 +22,7 @@ set(MyProject_CFG_APPEND
     ${MyProject_SRC_CFG_DIR}/MPConfig.h 
 )
 #ADD OPTIONS
-option(USE_VCPKG FALSE)
+option(USE_VCPKG TRUE)
 option(USE_GLOBAL_VCPKG FALSE)
 
 # By "CodeTechAndTutorials"
