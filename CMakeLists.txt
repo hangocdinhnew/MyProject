@@ -25,7 +25,6 @@ set(MyProject_CFG_APPEND
 set(CMAKE_PREFIX_PATH "~/DEV/vcpkg/installed/arm64-osx/share")
 # ONLY IF DIDN'T CLONE THE VCPKG
 
-
 #ADD RESOURCES 
 set(MACOSX_BUNDLE_ICON_FILE ico.icns)
 set(MyProject_ICON "${MyProject_DIR_RES}/ico.icns")
