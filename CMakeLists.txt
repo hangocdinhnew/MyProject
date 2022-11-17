@@ -21,8 +21,29 @@ set(MyProject_CFG_APPEND
     ${MyProject_SRC_CFG_DIR}/MPConfig.h.in
     ${MyProject_SRC_CFG_DIR}/MPConfig.h 
 )
+#ADD OPTIONS
+option(USE_VCPKG)
+# By "CodeTechAndTutorials"
+# ADD VCPKG
+if(USE_VCPKG)
+    find_package(Git QUIET)
+    if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+    # Update submodules as needed
+        option(GIT_SUBMODULE "Check submodules during build" ON)
+        if(GIT_SUBMODULE)
+            message(STATUS "Submodule update")
+            execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+                            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                            RESULT_VARIABLE GIT_SUBMOD_RESULT)
+            if(NOT GIT_SUBMOD_RESULT EQUAL "0")
+                message(FATAL_ERROR "git submodule update --init failed with ${GIT_SUBMOD_RESULT}, please checkout submodules")
+            endif()
+        endif()
+    endif()
+    set(CMAKE_TOOLCHAIN_FILE "./externals/vcpkg/scripts/buildsystems/vcpkg.cmake")
+endif()
 
-# ADD RESOURCES 
+#ADD RESOURCES 
 set(MACOSX_BUNDLE_ICON_FILE ico.icns)
 set(MyProject_ICON "${MyProject_DIR_RES}/ico.icns")
 set_source_files_properties(${MyProject_ICON}
@@ -30,8 +51,9 @@ set_source_files_properties(${MyProject_ICON}
     MACOSX_PACKAGE_LOCATION "Resources"
 )
 
-# ADD VCPKG PREFIX PATH TO CMAKE
-set(CMAKE_PREFIX_PATH "~/DEV/vcpkg/installed/arm64-osx/share")
+#ADD VCPKG PREFIX PATH TO CMAKE
+#set(CMAKE_PREFIX_PATH "~/DEV/vcpkg/installed/arm64-osx/share")
+# ONLY IF DIDN'T CLONE THE VCPKG
 
 # Set Resources
 file(GLOB_RECURSE RESOURCES_APPEND CONFIGURE_DEPENDS
