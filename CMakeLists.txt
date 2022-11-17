@@ -23,6 +23,7 @@ set(MyProject_CFG_APPEND
 )
 #ADD OPTIONS
 option(USE_VCPKG)
+option(USE_GLOBAL_VCPKG)
 # By "CodeTechAndTutorials"
 # ADD VCPKG
 if(USE_VCPKG)
@@ -43,6 +44,13 @@ if(USE_VCPKG)
     set(CMAKE_TOOLCHAIN_FILE "./externals/vcpkg/scripts/buildsystems/vcpkg.cmake")
 endif()
 
+if(USE_GLOBAL_VCPKG)
+    #ADD VCPKG PREFIX PATH TO CMAKE
+    set(CMAKE_PREFIX_PATH "~/DEV/vcpkg/installed/arm64-osx/share")
+    # ONLY IF DIDN'T CLONE THE VCPKG
+endif()
+
+
 #ADD RESOURCES 
 set(MACOSX_BUNDLE_ICON_FILE ico.icns)
 set(MyProject_ICON "${MyProject_DIR_RES}/ico.icns")
@@ -50,10 +58,6 @@ set_source_files_properties(${MyProject_ICON}
     PROPERTIES
     MACOSX_PACKAGE_LOCATION "Resources"
 )
-
-#ADD VCPKG PREFIX PATH TO CMAKE
-#set(CMAKE_PREFIX_PATH "~/DEV/vcpkg/installed/arm64-osx/share")
-# ONLY IF DIDN'T CLONE THE VCPKG
 
 # Set Resources
 file(GLOB_RECURSE RESOURCES_APPEND CONFIGURE_DEPENDS
