@@ -8,7 +8,8 @@ project(
     VERSION 1.0.0
     DESCRIPTION "The Greatest App Ever"
 )
-    
+
+# Build type and options
 #ADD SOURCES
 set(MyProject_DIR_ROOT ${CMAKE_CURRENT_LIST_DIR})
 set(MyProject_DIR_SRC "${MyProject_DIR_ROOT}/src")
@@ -19,13 +20,7 @@ set(MyProject_CFG_APPEND
     ${MyProject_SRC_CFG_DIR}/MPConfig.h.in
     ${MyProject_SRC_CFG_DIR}/MPConfig.h 
 )
-    
-#Add configuration files
-configure_file(
-    ${MyProject_CFG_APPEND}
-)
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 #ADD VCPKG PREFIX PATH TO CMAKE
 set(CMAKE_PREFIX_PATH "~/DEV/vcpkg/installed/arm64-osx/share")
 # ONLY IF DIDN'T CLONE THE VCPKG
@@ -65,7 +60,12 @@ add_executable(${PROJECT_NAME}
     ${MyProject_ICON}
     ${MyProject_SOURCES}
 )
-
+#Add configuration files
+configure_file(
+    ${MyProject_CFG_APPEND}
+)
+#Add some libraries
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 #Add Graphics Libraries
 find_package(glfw3 CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw "-framework OpenGL")
