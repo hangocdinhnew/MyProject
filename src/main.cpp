@@ -3,6 +3,8 @@
 
 int main(void)
 {
+    std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR;
+
     GLFWwindow* window;
 
     /* Initialize the library */
