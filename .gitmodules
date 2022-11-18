@@ -1,3 +1,0 @@
-[submodule "src/Lib/stb"]
-	path = src/Lib/stb
-	url = https://github.com/nothings/stb
