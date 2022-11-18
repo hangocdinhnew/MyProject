@@ -73,6 +73,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE glfw "-framework OpenGL")
 find_package(imgui CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
 
+find_package(GLEW REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE GLEW::GLEW)
+
 #Add GTest
 #ind_package(GTest CONFIG REQUIRED)
 #target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
