@@ -79,7 +79,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE glad::glad)
 
 #Add STB
 find_path(STB_INCLUDE_DIRS "stb_c_lexer.h")
-target_include_directories(main PRIVATE ${STB_INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
 
 #Add GTest
 #ind_package(GTest CONFIG REQUIRED)
