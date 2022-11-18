@@ -76,6 +76,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
 find_package(glad CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE glad::glad)
 
+#Add STB
+set(STB_INCLUDE_DIRS "./src/Lib/stb/")
+target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
+
 #Add GTest
 #ind_package(GTest CONFIG REQUIRED)
 #target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
