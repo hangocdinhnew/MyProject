@@ -77,9 +77,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
 find_package(glad CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE glad::glad)
 
-set(OpenCV_DIR "/Users/dinhndrwmacbook/DEV/vcpkg/installed/arm64-osx/share/opencv4")
-find_package(OpenCV REQUIRED)
-
 #Add STB
 find_path(STB_INCLUDE_DIRS "stb_c_lexer.h")
 target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})

@@ -2,6 +2,7 @@
 #include "Config/MPConfig.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <opencv2/opencv.hpp>
 #include <imgui.h>
 #include <imgui_impl_opengl3.h>
 #include <imgui_impl_glfw.h>
@@ -27,9 +28,15 @@ const char *fragmentShaderSource = "#version 330 core\n"
     "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
     "}\n\0";
 
-int main()
+int main(int argc, char* argv[])
 {
     std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR;
+
+    cv::Mat image = cv::imread("../Resources/ico.icns", cv::IMREAD_COLOR);
+    if(image.empty()) {
+        return -1;
+    }
+    cv::cvtColor(image, image, cv::COLOR_BGR2RGBA);
 
     // glfw: initialize and configure
     // ------------------------------
@@ -258,10 +265,19 @@ int main()
                 ImGuiFileDialog::Instance()->Close();
             }
 
+            GLuint texture;
+            glGenTextures( 1, &texture );
+            glBindTexture( GL_TEXTURE_2D, texture );
+            glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+            glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+            glPixelStorei( GL_UNPACK_ROW_LENGTH, 0 );
+            glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, image.cols, image.rows, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.data );
+            ImGui::Image( reinterpret_cast<void*>( static_cast<intptr_t>( texture ) ), ImVec2( image.cols, image.rows ) );
+
             ImGui::End();
         }
 
-                // Rendering
+        // Rendering
         ImGui::Render();
         int display_w, display_h;
         glfwGetFramebufferSize(window, &display_w, &display_h);
