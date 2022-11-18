@@ -241,7 +241,7 @@ int main()
                 show_another_window = false;
             //File Manager
             if (ImGui::Button("Open File Manager")) 
-                ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".*", ".");
+                ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".", 1, nullptr, ImGuiFileDialogFlags_Modal);
 
             // display
             if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey")) 
