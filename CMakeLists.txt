@@ -66,9 +66,14 @@ configure_file(
 )
 #Add some libraries
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
-
+#Add Graphics Libraries
 find_package(glfw3 CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw "-framework OpenGL")
 
 find_package(imgui CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
+
+#Add GTest
+#ind_package(GTest CONFIG REQUIRED)
+#target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
+# If you want to
