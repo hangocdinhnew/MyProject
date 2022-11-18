@@ -1,3 +1,4 @@
+// The Source CPP file
 #include "Config/MPConfig.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -224,6 +225,10 @@ int main()
             ImGui::Text("counter = %d", counter);
 
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+            ImGui::End();
+
+            ImGui::Begin("GLFW logo");
+            
             ImGui::End();
         }
 
