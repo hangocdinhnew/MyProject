@@ -234,9 +234,10 @@ int main()
             ImGui::Text("Hello from another window!");
             if (ImGui::Button("Close Me"))
                 show_another_window = false;
+            //File Manager
             if (ImGui::Button("Open File Manager")) 
-                ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".");
-                
+                ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".*", ".");
+
             // display
             if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey")) 
             {
