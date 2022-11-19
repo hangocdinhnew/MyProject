@@ -6,6 +6,7 @@ set(CMAKE_GENERATOR "Ninja")
 # Set Project Name and Version 
 project(
     MyProject
+    LANGUAGES CXX
     VERSION 1.0.0
     DESCRIPTION "The Greatest App Ever"
 )
@@ -65,6 +66,7 @@ add_executable(${PROJECT_NAME}
 configure_file(
     ${MyProject_CFG_APPEND}
 )
+
 #Add some libraries
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 #Add Graphics Libraries
@@ -85,6 +87,6 @@ find_path(STB_INCLUDE_DIRS "stb_c_lexer.h")
 target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
 
 #Add GTest
-#ind_package(GTest CONFIG REQUIRED)
+#find_package(GTest CONFIG REQUIRED)
 #target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
 # If you want to
