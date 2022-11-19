@@ -11,6 +11,16 @@ project(
     DESCRIPTION "The Greatest App Ever"
 )
 
+
+if (CMAKE_BUILD_TYPE MATCHES Release)
+    set(CMAKE_CXX_FLAGS "-O3")
+elseif (CMAKE_BUILD_TYPE MATCHES Trace)
+    set(CMAKE_CXX_FLAGS "-O3")
+    add_compile_definitions(ENABLE_TRACING)
+elseif (CMAKE_BUILD_TYPE MATCHES Debug)
+    set(CMAKE_CXX_FLAGS "-g")
+endif ()
+
 # Build type and options
 #ADD SOURCES
 set(MyProject_DIR_ROOT ${CMAKE_CURRENT_LIST_DIR})
