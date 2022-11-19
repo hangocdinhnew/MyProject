@@ -181,6 +181,7 @@ int main(int argc, char* argv[])
     // Our state
     bool show_demo_window = true;
     bool show_another_window = false;
+    bool show_implot_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // uncomment this call to draw in wireframe polygons.
@@ -217,7 +218,7 @@ int main(int argc, char* argv[])
             ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
             ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
             ImGui::Checkbox("Another Window", &show_another_window);
-            
+
             ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
             ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
 
@@ -237,6 +238,9 @@ int main(int argc, char* argv[])
             ImGui::Text("Hello from another window!");
             if (ImGui::Button("Close Me"))
                 show_another_window = false;
+            
+            ImGui::Checkbox("ImPlot Demo Window", &show_implot_window);
+            
             //File Manager
             if (ImGui::Button("Open File Manager")) 
                 ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".", 1, nullptr, ImGuiFileDialogFlags_Modal);
@@ -256,10 +260,12 @@ int main(int argc, char* argv[])
                 ImGuiFileDialog::Instance()->Close();
             }
 
-            if (ImGui::Button("Open ImPlot"))
-                ImPlot::ShowDemoWindow();
-
             ImGui::End();
+        }
+
+        if (show_implot_window) 
+        {
+            ImPlot::ShowDemoWindow();
         }
 
         // Rendering
