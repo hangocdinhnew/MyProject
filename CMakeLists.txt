@@ -1,5 +1,15 @@
 cmake_minimum_required(VERSION 3.20.0)
 # Set Generator and build type
+
+if (CMAKE_BUILD_TYPE MATCHES Release)
+    set(CMAKE_CXX_FLAGS "-O3")
+elseif (CMAKE_BUILD_TYPE MATCHES Trace)
+    set(CMAKE_CXX_FLAGS "-O3")
+    add_compile_definitions(ENABLE_TRACING)
+elseif (CMAKE_BUILD_TYPE MATCHES Debug)
+    set(CMAKE_CXX_FLAGS "-g")
+endif ()
+
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
 set(CMAKE_GENERATOR "Ninja")
@@ -10,16 +20,6 @@ project(
     VERSION 1.0.0
     DESCRIPTION "The Greatest App Ever"
 )
-
-
-if (CMAKE_BUILD_TYPE MATCHES Release)
-    set(CMAKE_CXX_FLAGS "-O3")
-elseif (CMAKE_BUILD_TYPE MATCHES Trace)
-    set(CMAKE_CXX_FLAGS "-O3")
-    add_compile_definitions(ENABLE_TRACING)
-elseif (CMAKE_BUILD_TYPE MATCHES Debug)
-    set(CMAKE_CXX_FLAGS "-g")
-endif ()
 
 # Build type and options
 #ADD SOURCES
