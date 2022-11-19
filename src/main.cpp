@@ -1,7 +1,6 @@
 // The Source CPP file
 // My CPP file
 #include "Config/MPConfig.h"
-#include "main.h"
 // Graphics Libraries
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -258,16 +257,7 @@ int main(int argc, char* argv[])
 
             if (ImGui::BeginMenu("Tools")) 
             {
-                ImGui::MenuItem("Console", NULL, &show_app_console);
-                ImGui::MenuItem("Log", NULL, &show_app_log);
-                ImGui::MenuItem("Simple layout", NULL, &show_app_layout);
-                ImGui::MenuItem("Property editor", NULL, &show_app_property_editor);
-                ImGui::MenuItem("Long text display", NULL, &show_app_long_text);
-                ImGui::MenuItem("Auto-resizing window", NULL, &show_app_auto_resize);
-                ImGui::MenuItem("Constrained-resizing window", NULL, &show_app_constrained_resize);
-                ImGui::MenuItem("Simple overlay", NULL, &show_app_fixed_overlay);
-                ImGui::MenuItem("Manipulating window title", NULL, &show_app_manipulating_window_title);
-                ImGui::MenuItem("Custom rendering", NULL, &show_app_custom_rendering);
+
                 ImGui::EndMenu();
             }
             
