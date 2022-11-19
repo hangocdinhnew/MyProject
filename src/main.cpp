@@ -42,12 +42,6 @@ int main(int argc, char* argv[])
     // ------------------------------
     glfwInit();
 
-    // Set OpenAL Value
-    SoundDevice * mysounddevice = SoundDevice::get();
-
-    uint32_t /*ALuint*/ sound1 = SoundBuffer::get()->addSoundEffect("../Resources/sound1.mp3.mpeg");
-
-    SoundSource mySpeaker;
     // Decide GL+GLSL versions
 #if defined(IMGUI_IMPL_OPENGL_ES2)
     // GL ES 2.0 + GLSL 100
@@ -212,6 +206,13 @@ int main(int argc, char* argv[])
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
+
+        // Set OpenAL Value
+        SoundDevice * mysounddevice = SoundDevice::get();
+
+        uint32_t /*ALuint*/ sound1 = SoundBuffer::get()->addSoundEffect("../Resources/sound1.mp3.mpeg");
+
+        SoundSource mySpeaker;
 
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         if (show_demo_window)
