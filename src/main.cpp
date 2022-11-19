@@ -1,6 +1,10 @@
 // The Source CPP file
 // My CPP file
 #include "Config/MPConfig.h"
+// My Sound CPP file
+#include "Sound/SoundDevice.h"
+#include "Sound/SoundBuffer.h"
+#include "Sound/SoundSource.h"
 // Graphics Libraries
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -38,6 +42,12 @@ int main(int argc, char* argv[])
     // ------------------------------
     glfwInit();
 
+    // Set OpenAL Value
+    SoundDevice * mysounddevice = SoundDevice::get();
+
+    uint32_t /*ALuint*/ sound1 = SoundBuffer::get()->addSoundEffect("../Resources/sound1.mp3.mpeg");
+
+    SoundSource mySpeaker;
     // Decide GL+GLSL versions
 #if defined(IMGUI_IMPL_OPENGL_ES2)
     // GL ES 2.0 + GLSL 100
@@ -254,10 +264,15 @@ int main(int argc, char* argv[])
 
                 ImGui::EndMenu();
             }
-
-            if (ImGui::BeginMenu("Tools")) 
-            {
-
+            if (ImGui::BeginMenu("Music")) {
+                if (ImGui::BeginMenu("Music Manager")) {
+                    // music manager
+                    ImGui::BeginPopupModal("Music Manager");
+                    if (ImGui::Button("Play music 1"))
+                        mySpeaker.Play(sound1);
+                    ImGui::BulletText("This will make the application freeze");
+                    ImGui::EndPopup();
+                }
                 ImGui::EndMenu();
             }
             

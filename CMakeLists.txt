@@ -47,6 +47,7 @@ set_source_files_properties(${MyProject_ICON}
 # Set Resources
 file(GLOB_RECURSE RESOURCES_APPEND CONFIGURE_DEPENDS
     "*.ttf"
+    "*.mp3.mpeg"
 )
 
 list(APPEND MyProject_Resources_FILES ${RESOURCES_APPEND})
@@ -94,6 +95,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE glad::glad)
 #Add STB
 find_path(STB_INCLUDE_DIRS "stb_c_lexer.h")
 target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
+
+#Add Audio Libraries
+find_package(OpenAL CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenAL::OpenAL)
+#Add SndFile
+find_package(SndFile CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE SndFile::sndfile)
 
 #Add GTest
 #find_package(GTest CONFIG REQUIRED)
