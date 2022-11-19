@@ -261,8 +261,6 @@ int main(int argc, char* argv[])
             ImGui::End();
         }
 
-
-        
         // Rendering
         ImGui::Render();
         int display_w, display_h;
