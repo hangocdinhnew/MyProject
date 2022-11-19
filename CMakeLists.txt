@@ -74,6 +74,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE glfw "-framework OpenGL")
 find_package(imgui CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
 
+find_package(implot CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE implot::implot)
+
 find_package(glad CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE glad::glad)
 

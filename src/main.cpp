@@ -3,8 +3,10 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <imgui.h>
+//ImGui Addons
 #include <imgui_impl_opengl3.h>
 #include <imgui_impl_glfw.h>
+#include <implot.h>
 #include "Lib/ImGuiFileDialog/ImGuiFileDialog.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -257,6 +259,9 @@ int main(int argc, char* argv[])
                 // close
                 ImGuiFileDialog::Instance()->Close();
             }
+
+            if (ImGui::Button("Open ImPlot"))
+                ImPlot::ShowDemoWindow();
 
             ImGui::End();
         }
