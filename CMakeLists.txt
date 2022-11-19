@@ -9,7 +9,7 @@ elseif (CMAKE_BUILD_TYPE MATCHES Debug)
     set(CMAKE_CXX_FLAGS "-g")
 endif ()
 
-set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})
+set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
 set(CMAKE_GENERATOR "Ninja")
 # Set Project Name and Version 
