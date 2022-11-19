@@ -6,7 +6,6 @@
 //ImGui Addons
 #include <imgui_impl_opengl3.h>
 #include <imgui_impl_glfw.h>
-#include <implot.h>
 #include "Lib/ImGuiFileDialog/ImGuiFileDialog.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -181,7 +180,6 @@ int main(int argc, char* argv[])
     // Our state
     bool show_demo_window = true;
     bool show_another_window = false;
-    bool show_implot_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // uncomment this call to draw in wireframe polygons.
@@ -239,8 +237,6 @@ int main(int argc, char* argv[])
             if (ImGui::Button("Close Me"))
                 show_another_window = false;
             
-            ImGui::Checkbox("ImPlot Demo Window", &show_implot_window);
-            
             //File Manager
             if (ImGui::Button("Open File Manager")) 
                 ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".", 1, nullptr, ImGuiFileDialogFlags_Modal);
@@ -261,11 +257,6 @@ int main(int argc, char* argv[])
             }
 
             ImGui::End();
-        }
-
-        if (show_implot_window) 
-        {
-            ImPlot::ShowDemoWindow();
         }
 
         // Rendering
