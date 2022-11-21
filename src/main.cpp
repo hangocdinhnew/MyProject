@@ -1,32 +1,34 @@
-// The Source CPP file
-// My CPP file
+/* Including the header file MPConfig.h. */
 #include "Config/MPConfig.h"
-// My Sound CPP file
+/* Including the header files for the SoundDevice, SoundBuffer, and SoundSource classes. */
 #include "Sound/SoundDevice.h"
 #include "Sound/SoundBuffer.h"
 #include "Sound/SoundSource.h"
-// Graphics Libraries
+/* The above code is importing the necessary libraries for the program to run. */
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <imgui.h>
-//ImGui Addons
+/* The above code is including the ImGuiFileDialog library. */
 #include <imgui_impl_opengl3.h>
 #include <imgui_impl_glfw.h>
 #include "Lib/ImGuiFileDialog/ImGuiFileDialog.h"
 
+// OPENGL THINGS
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 
-// settings
+/* Defining the width and height of the screen. */
 const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1080;
 
+/* The above code is a vertex shader. It is a program that runs on the GPU. It is written in GLSL. */
 const char *vertexShaderSource = "#version 330 core\n"
     "layout (location = 0) in vec3 aPos;\n"
     "void main()\n"
     "{\n"
     "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
     "}\0";
+/* The above code is creating a fragment shader. */
 const char *fragmentShaderSource = "#version 330 core\n"
     "out vec4 FragColor;\n"
     "void main()\n"
@@ -34,22 +36,33 @@ const char *fragmentShaderSource = "#version 330 core\n"
     "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
     "}\n\0";
 
+/**
+ * 
+ * 
+ * @param argc The number of arguments passed to the program.
+ * @param argv An array of strings, each of which is an argument.
+ * 
+ * @return The return value is the exit code of the program.
+ */
+
 int main(int argc, char* argv[])
 {
+    /* Printing the version of the project. */
     std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR;
 
-    // glfw: initialize and configure
-    // ------------------------------
+    /* Initializing the GLFW library. */
     glfwInit();
 
-    // Set OpenAL Value
+    /* Creating a pointer to a SoundDevice object. */
     SoundDevice * mysounddevice = SoundDevice::get();
 
+    /* Loading a sound file into memory. */
     uint32_t /*ALuint*/ sound1 = SoundBuffer::get()->addSoundEffect("../Resources/sound1.mp3.mpeg");
 
+    /* Creating a new object called mySpeaker of the class SoundSource. */
     SoundSource mySpeaker;
 
-    // Decide GL+GLSL versions
+/* Setting the version of OpenGL to use. */
 #if defined(IMGUI_IMPL_OPENGL_ES2)
     // GL ES 2.0 + GLSL 100
     const char* glsl_version = "#version 100";
@@ -71,34 +84,39 @@ int main(int argc, char* argv[])
     //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // 3.2+ only
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // 3.0+ only
 #endif
-    // glfw window creation
-    // --------------------
+
+    /* Creating a window with the title "MyApp" and the dimensions of SCR_WIDTH and SCR_HEIGHT. */
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "MyApp", NULL, NULL);
+    /* Creating a window and checking if it was created successfully. */
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return -1;
     }
+    /* *|MARKER_CURSOR|* */
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(1); // Enable vsync
+
+    /* Setting the swap interval to 1. This means that the buffer swap will be synchronized with the
+    monitor's vertical refresh. */
+
+    glfwSwapInterval(1);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // glad: load all OpenGL function pointers
-    // ---------------------------------------
+    /* Loading the OpenGL function pointers. */
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
 
-    // build and compile our shader program
-    // ------------------------------------
-    // vertex shader
+
+    /* *|MARKER_CURSOR|* */
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
     glCompileShader(vertexShader);
-    // check for shader compile errors
+    /* The above code is checking to see if the vertex shader compiled successfully. If it did not, it
+    prints out the error message. */
     int success;
     char infoLog[512];
     glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
@@ -107,23 +125,26 @@ int main(int argc, char* argv[])
         glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
-    // fragment shader
+    // fragmentShader
     unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
     glCompileShader(fragmentShader);
-    // check for shader compile errors
+
+    /* *|MARKER_CURSOR|* */
     glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+    /* The above code is checking to see if the fragment shader compiled successfully. If it did not, it
+    prints out the error message. */
     if (!success)
     {
         glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
-    // link shaders
+    /* Creating a shader program and link shaders. */
     unsigned int shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
-    // check for linking errors
+    // Check linking errors
     glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
     if (!success) {
         glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
@@ -320,16 +341,25 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-// ---------------------------------------------------------------------------------------------------------
+/**
+ * It tells OpenGL the size of the rendering window so OpenGL knows how we want to display the data and
+ * coordinates with respect to the window
+ * 
+ * @param window The window whose size, position, or video mode was changed.
+ */
 void processInput(GLFWwindow *window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 }
 
-// glfw: whenever the window size changed (by OS or user resize) this callback function executes
-// ---------------------------------------------------------------------------------------------
+/**
+ * Whenever the window is resized, the viewport is set to match the new window dimensions
+ * 
+ * @param window The window that received the event.
+ * @param width the width of the framebuffer in pixels
+ * @param height the height of the framebuffer in pixels
+ */
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     // make sure the viewport matches the new window dimensions; note that width and 
