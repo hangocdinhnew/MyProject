@@ -36,15 +36,13 @@ const char *fragmentShaderSource = "#version 330 core\n"
     "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
     "}\n\0";
 
-/**
- * 
- * 
- * @param argc The number of arguments passed to the program.
- * @param argv An array of strings, each of which is an argument.
- * 
- * @return The return value is the exit code of the program.
- */
 
+/**
+ * The main function.
+ * 
+ * @param argc the number of arguments passed to the program
+ * @param argv the array of strings that are the command line arguments
+ */
 int main(int argc, char* argv[])
 {
     /* Printing the version of the project. */
