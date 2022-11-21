@@ -16,7 +16,7 @@ set(CMAKE_GENERATOR "Ninja")
 project(
     MyProject
     LANGUAGES CXX
-    VERSION 1.0.0
+    VERSION 2.0.0
     DESCRIPTION "The Greatest App Ever"
 )
 
