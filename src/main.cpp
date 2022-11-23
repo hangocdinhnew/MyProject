@@ -1,13 +1,13 @@
 /* Including the header file MPConfig.h. */
 #include "Config/MPConfig.h"
-/* Including the header files for the SoundDevice, SoundBuffer, and SoundSource classes. */
-#include "Sound/SoundDevice.h"
-#include "Sound/SoundBuffer.h"
-#include "Sound/SoundSource.h"
 /* The above code is importing the necessary libraries for the program to run. */
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <imgui.h>
+/* Adding sound libraries. */
+#include "Sound/SoundDevice.h"
+#include "Sound/SoundEffectsPlayer.h"
+#include "Sound/SoundEffectsLibrary.h"
 /* The above code is including the ImGuiFileDialog library. */
 #include <imgui_impl_opengl3.h>
 #include <imgui_impl_glfw.h>
@@ -51,14 +51,9 @@ int main(int argc, char* argv[])
     /* Initializing the GLFW library. */
     glfwInit();
 
-    /* Creating a pointer to a SoundDevice object. */
-    SoundDevice * mysounddevice = SoundDevice::get();
-
-    /* Loading a sound file into memory. */
-    uint32_t /*ALuint*/ sound1 = SoundBuffer::get()->addSoundEffect("../Resources/sound1.mp3.mpeg");
-
-    /* Creating a new object called mySpeaker of the class SoundSource. */
-    SoundSource mySpeaker;
+    SoundDevice* sd = LISTENER->Get();
+    int SciFiSound = SE_LOAD("../Resources/sound1.mp3.mpeg");
+    SoundEffectsPlayer sound_effects_player_forSciFiSound;
 
 /* Setting the version of OpenGL to use. */
 #if defined(IMGUI_IMPL_OPENGL_ES2)
@@ -216,6 +211,9 @@ int main(int argc, char* argv[])
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+    sound_effects_player_forSciFiSound.SetLooping(true);
+
+
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
@@ -289,7 +287,9 @@ int main(int argc, char* argv[])
                     // music manager
                     ImGui::BeginPopupModal("Music Manager");
                     if (ImGui::Button("Play music 1"))
-                        mySpeaker.Play(sound1);
+                    {
+                        sound_effects_player_forSciFiSound.Play(SciFiSound);
+                    }
                     ImGui::BulletText("This will make the application freeze");
                     ImGui::EndPopup();
                 }
