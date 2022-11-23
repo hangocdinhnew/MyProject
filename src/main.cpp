@@ -211,8 +211,7 @@ int main(int argc, char* argv[])
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    sound_effects_player_forSciFiSound.SetLooping(true);
-
+    sound_effects_player_forSciFiSound.SetLooping(false);
 
     // render loop
     // -----------
@@ -286,11 +285,14 @@ int main(int argc, char* argv[])
                 if (ImGui::BeginMenu("Music Manager")) {
                     // music manager
                     ImGui::BeginPopupModal("Music Manager");
+                    ImGui::BulletText("Sound Looping DO NOT PRESS ON ANY BUTTON ON THESE IF YOU'RE PLAYING MUSIC");
+                    if (ImGui::Button("Yes"))
+                        sound_effects_player_forSciFiSound.SetLooping(true);
+                    if (ImGui::Button("No"))
+                        sound_effects_player_forSciFiSound.SetLooping(false);
+                    ImGui::BulletText("Music List");
                     if (ImGui::Button("Play music 1"))
-                    {
-                        sound_effects_player_forSciFiSound.Play(SciFiSound);
-                    }
-                    ImGui::BulletText("This will make the application freeze");
+                        sound_effects_player_forSciFiSound.Play(SciFiSound); 
                     ImGui::EndPopup();
                 }
                 ImGui::EndMenu();
