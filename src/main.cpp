@@ -51,9 +51,10 @@ int main(int argc, char* argv[])
     /* Initializing the GLFW library. */
     glfwInit();
 
+    /* Sound */
     SoundDevice* sd = LISTENER->Get();
-    int SciFiSound = SE_LOAD("../Resources/sound1.mp3.mpeg");
-    SoundEffectsPlayer sound_effects_player_forSciFiSound;
+    int Music = SE_LOAD("../Resources/sound1.mp3.mpeg");
+    SoundEffectsPlayer sound_effects_player_forMusic;
 
 /* Setting the version of OpenGL to use. */
 #if defined(IMGUI_IMPL_OPENGL_ES2)
@@ -211,7 +212,7 @@ int main(int argc, char* argv[])
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    sound_effects_player_forSciFiSound.SetLooping(false);
+    sound_effects_player_forMusic.SetLooping(false);
 
     // render loop
     // -----------
@@ -287,12 +288,12 @@ int main(int argc, char* argv[])
                     ImGui::BeginPopupModal("Music Manager");
                     ImGui::BulletText("Sound Looping DO NOT PRESS ON ANY BUTTON ON THESE IF YOU'RE PLAYING MUSIC");
                     if (ImGui::Button("Yes"))
-                        sound_effects_player_forSciFiSound.SetLooping(true);
+                        sound_effects_player_forMusic.SetLooping(true);
                     if (ImGui::Button("No"))
-                        sound_effects_player_forSciFiSound.SetLooping(false);
+                        sound_effects_player_forMusic.SetLooping(false);
                     ImGui::BulletText("Music List");
                     if (ImGui::Button("Play music 1"))
-                        sound_effects_player_forSciFiSound.Play(SciFiSound); 
+                        sound_effects_player_forMusic.Play(Music); 
                     ImGui::EndPopup();
                 }
                 ImGui::EndMenu();
