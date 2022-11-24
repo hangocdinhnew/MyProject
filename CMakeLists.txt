@@ -134,3 +134,5 @@ if(USE_DOXYGEN)
         endif (DOXYGEN_FOUND)
     endif()
 endif()
+
+enable_testing()
