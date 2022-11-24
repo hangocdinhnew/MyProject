@@ -102,11 +102,14 @@ target_link_libraries(${PROJECT_NAME} PRIVATE OpenAL::OpenAL)
 #Add SndFile
 find_package(SndFile CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE SndFile::sndfile)
+#Add Freetype
+find_package(freetype CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE freetype)
 
 #Add GTest
 #find_package(GTest CONFIG REQUIRED)
 #target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
-# If you want to
+#If you want to
 
 #Options
 option(USE_DOXYGEN "Build Documentation" ${USE_DOXYGEN})
@@ -134,5 +137,3 @@ if(USE_DOXYGEN)
         endif (DOXYGEN_FOUND)
     endif()
 endif()
-
-enable_testing()
