@@ -286,7 +286,7 @@ int main(int argc, char* argv[])
                 if (ImGui::BeginMenu("Music Manager")) {
                     // music manager
                     ImGui::BeginPopupModal("Music Manager");
-                    ImGui::BulletText("Sound Looping DO NOT PRESS ON ANY BUTTON ON THESE IF YOU'RE PLAYING MUSIC");
+                    ImGui::BulletText("Sound Looping");
                     if (ImGui::Button("Yes"))
                         sound_effects_player_forMusic.SetLooping(true);
                     if (ImGui::Button("No"))
