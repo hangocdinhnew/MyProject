@@ -212,6 +212,11 @@ int main(int argc, char* argv[])
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+    // SD
+    ALint attunation = AL_INVERSE_DISTANCE_CLAMPED;
+	sd->SetAttunation(attunation);
+	sd->SetLocation(0.f, 0.f, 0.f);
+	sd->SetOrientation(0.f, 1.f, 0.f, 0.f, 0.f, 1.f);
     sound_effects_player_forMusic.SetLooping(false);
 
     // render loop
