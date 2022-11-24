@@ -4,3 +4,4 @@
 #include <iostream>
 #include <vector>
 #include <stdio.h>
+#define IMGUI_ENABLE_FREETYPE
