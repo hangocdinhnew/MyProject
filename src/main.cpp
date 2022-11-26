@@ -2,6 +2,7 @@
 #include "Config/MPConfig.h"
 /* The above code is importing the necessary libraries for the program to run. */
 #include <glad/glad.h>
+#include <gl/gl3w.h>
 #include <GLFW/glfw3.h>
 #include <imgui.h>
 /* Adding sound libraries. */
@@ -110,6 +111,14 @@ int main(int argc, char* argv[])
         return -1;
     }
 
+    /* GL3W */
+    for (int i = 0; i < 100; ++i) 
+    {
+        if (gl3wInit()) 
+            return 3;
+    }
+    if (!gl3wIsSupported(3, 3)) 
+        return 4;
 
     /* *|MARKER_CURSOR|* */
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
