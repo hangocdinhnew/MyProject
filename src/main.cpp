@@ -1,24 +1,5 @@
 /* Including the header file MPConfig.h. */
 #include "Config/MPConfig.h"
-/* The above code is importing the necessary libraries for the program to run. */
-#include <glad/glad.h>
-#include <gl/gl3w.h>
-#include <GLFW/glfw3.h>
-#include <imgui.h>
-/* Adding sound libraries. */
-#include "Sound/SoundDevice.h"
-#include "Sound/SoundEffectsPlayer.h"
-#include "Sound/SoundEffectsLibrary.h"
-/* Freetype */
-#include <ft2build.h>
-#include <freetype/freetype.h>
-/* The above code is including the ImGuiFileDialog library, misc and backend. */
-#include <imgui_impl_opengl3.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_freetype.h>
-#include "Lib/ImGuiFileDialog/ImGuiFileDialog.h"
-/* Text Editor */
-#include "Lib/TextEditor/TextEditor.h"
 
 // OPENGL THINGS
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
