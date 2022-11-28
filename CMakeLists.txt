@@ -26,7 +26,7 @@ set(MyProject_DIR_ROOT ${CMAKE_CURRENT_LIST_DIR})
 set(MyProject_DIR_SRC "${MyProject_DIR_ROOT}/src")
 set(MyProject_DIR_RES "${MyProject_DIR_ROOT}/res")
 set(MyProject_BundleApp_ResourcesDir "${CMAKE_CURRENT_BINARY_DIR}/MyProject.app/Contents/Resources/")
-set(MyProject_SRC_CFG_DIR ${MyProject_DIR_SRC}/Config/)
+set(MyProject_SRC_CFG_DIR ${MyProject_DIR_SRC}/main/Config/)
 set(MyProject_CFG_APPEND 
     ${MyProject_SRC_CFG_DIR}/MPConfig.h.cmake
     ${MyProject_SRC_CFG_DIR}/MPConfig.h 
@@ -65,7 +65,7 @@ macro(MyProject_SOURCES_APPEND)
 endmacro()
 
 # Set the project folder you can use GLOB to manually do it but it's not very automatically tho
-MyProject_SOURCES_APPEND(${MyProject_DIR_SRC})
+MyProject_SOURCES_APPEND(${MyProject_DIR_SRC}/MP)
 
 add_executable(${PROJECT_NAME}
     MACOSX_BUNDLE
@@ -106,10 +106,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE SndFile::sndfile)
 find_package(freetype CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE freetype)
 
-#Add GTest
+#Add Unit Testing Framework
+
+find_package(Catch2 CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2 Catch2::Catch2WithMain)
+
 #find_package(GTest CONFIG REQUIRED)
 #target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
-#If you want to
 
 #Options
 option(USE_DOXYGEN "Build Documentation" ${USE_DOXYGEN})
