@@ -65,7 +65,7 @@ macro(MyProject_SOURCES_APPEND)
 endmacro()
 
 # Set the project folder you can use GLOB to manually do it but it's not very automatically tho
-MyProject_SOURCES_APPEND(${MyProject_DIR_SRC}/MP)
+MyProject_SOURCES_APPEND(${MyProject_DIR_SRC}/main)
 
 add_executable(${PROJECT_NAME}
     MACOSX_BUNDLE
