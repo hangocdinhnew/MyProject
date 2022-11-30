@@ -215,7 +215,6 @@ int main(int argc, char* argv[])
 	sd->SetOrientation(0.f, 1.f, 0.f, 0.f, 0.f, 1.f);
     sound_effects_player_forMusic.SetLooping(false);
 
-
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
