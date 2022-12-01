@@ -422,6 +422,7 @@ int main(int argc, char* argv[])
  * 
  * @param window The window whose size, position, or video mode was changed.
  */
+
 void processInput(GLFWwindow *window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
