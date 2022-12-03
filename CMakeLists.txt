@@ -144,3 +144,14 @@ if(USE_DOXYGEN)
         endif (DOXYGEN_FOUND)
     endif()
 endif()
+
+find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
+if (CMAKE_CXX_CPPCHECK)
+    list(
+        APPEND CMAKE_CXX_CPPCHECK 
+            "--enable=warning"
+            "--inconclusive"
+            "--force" 
+            "--inline-suppr"
+    )
+endif()
