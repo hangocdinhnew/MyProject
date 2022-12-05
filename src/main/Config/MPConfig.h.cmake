@@ -9,6 +9,8 @@
 #include <GLFW/glfw3.h>
 #include <imgui.h>
 
+#include <opencv2/opencv.hpp>
+
 #include "../Sound/SoundDevice.h"
 #include "../Sound/SoundEffectsPlayer.h"
 #include "../Sound/SoundEffectsLibrary.h"

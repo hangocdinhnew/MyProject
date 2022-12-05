@@ -93,9 +93,10 @@ find_package(gl3w CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE unofficial::gl3w::gl3w)
 
 #OpenCV
-#find_package(OpenCV CONFIG REQUIRED)
-#target_link_libraries(${PROJECT_NAME} PRIVATE opencv_ml tegra_hal opencv_dnn opencv_core)
-#
+find_package(OpenCV CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE opencv_ml tegra_hal opencv_dnn opencv_core)
+#OpenCV
+
 #Add STB
 find_path(STB_INCLUDE_DIRS "stb_c_lexer.h")
 target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
