@@ -119,7 +119,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2 Catch2::Catch2WithM
 #target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
 
 #Options
-option(USE_DOXYGEN "Build Documentation" ${USE_DOXYGEN})
+option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
+option(USE_CPPCHECK "Use Static anylist application" TRUE)
 
 if(USE_DOXYGEN)
     if (CMAKE_BUILD_TYPE MATCHES "Release")
@@ -145,13 +146,15 @@ if(USE_DOXYGEN)
     endif()
 endif()
 
-find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
-if (CMAKE_CXX_CPPCHECK)
-    list(
-        APPEND CMAKE_CXX_CPPCHECK 
-            "--enable=warning"
-            "--inconclusive"
-            "--force" 
-            "--inline-suppr"
-    )
+if(USE_CPPCHECK)
+    find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
+    if (CMAKE_CXX_CPPCHECK)
+        list(
+            APPEND CMAKE_CXX_CPPCHECK 
+                "--enable=warning"
+                "--inconclusive"
+                "--force" 
+                "--inline-suppr"
+        )
+    endif()
 endif()
