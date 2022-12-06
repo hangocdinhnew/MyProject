@@ -103,7 +103,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${STB_INCLUDE_DIRS})
 
 #Add Audio Libraries
 find_package(OpenAL CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE OpenAL::OpenAL)
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenAL::OpenAL "-framework OpenAL")
 #Add SndFile
 find_package(SndFile CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE SndFile::sndfile)
