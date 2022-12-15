@@ -148,14 +148,16 @@ if(USE_DOXYGEN)
 endif()
 
 if(USE_CPPCHECK)
-    find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
-    if (CMAKE_CXX_CPPCHECK)
-        list(
-            APPEND CMAKE_CXX_CPPCHECK 
-                "--enable=warning"
-                "--inconclusive"
-                "--force" 
-                "--inline-suppr"
-        )
+    if (CMAKE_BUILD_TYPE MATCHES "Release")  
+        find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
+        if (CMAKE_CXX_CPPCHECK)
+            list(
+                APPEND CMAKE_CXX_CPPCHECK 
+                    "--enable=warning"
+                    "--inconclusive"
+                    "--force" 
+                    "--inline-suppr"
+            )
+        endif()
     endif()
 endif()
