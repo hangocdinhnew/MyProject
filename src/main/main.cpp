@@ -1,8 +1,9 @@
 /* Including the header file MPConfig.h. */
 #include "Config/MPConfig.h"
 
-// OPENGL THINGS
+// Create framebuffer size
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+// Create Input Key
 void processInput(GLFWwindow *window);
 
 /* Defining the width and height of the screen. */
