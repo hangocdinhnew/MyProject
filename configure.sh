@@ -4,4 +4,5 @@ cmake -B build -G "Ninja" -DCMAKE_BUILD_TYPE="Release" -DUSE_DOXYGEN="True" -DUS
 cd build;
 ninja;
 cd ..;
+echo ""
 echo "Building done!"
