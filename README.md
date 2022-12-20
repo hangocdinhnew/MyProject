@@ -5,9 +5,7 @@
 #### SPOILERS
 
 <details>
-  <summary>Spoiler warning</summary>
-  
-  Spoiler Alert
+  <summary>Spoiler warning</summary
   
   ```
     I sucks at coding
