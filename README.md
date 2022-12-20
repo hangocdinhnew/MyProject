@@ -2,6 +2,19 @@
 ## The Project was no named because I want to learn more about C++ syntax and OpenGL 
 ### This project may use for commercial use and this will be a product of me maybe soon
 
+#### SPOILERS
+
+<details>
+  <summary>Spoiler warning</summary>
+  
+  Spoiler Alert
+  
+  ```
+    I sucks at coding
+  ```
+  
+</details>
+
 #### TODO:
 
 - [ ] Finish Project
