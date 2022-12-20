@@ -1,0 +1,3 @@
+[submodule "src/main/Lib/TextEditor"]
+	path = src/main/Lib/TextEditor
+	url = https://github.com/BalazsJako/ImGuiColorTextEdit
