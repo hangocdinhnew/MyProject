@@ -10,9 +10,11 @@ elseif (CMAKE_BUILD_TYPE MATCHES Debug)
 endif ()
 
 set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
-set(CMAKE_GENERATOR "Ninja")
-# Set Project Name and Version 
+# Set Project Name and Version
 project(
     MyProject
     LANGUAGES C CXX
