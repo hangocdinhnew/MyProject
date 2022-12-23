@@ -1,4 +1,4 @@
-#define MyProject_VERSION_MAJOR 2
+#define MyProject_VERSION_MAJOR 3
 #define MyProject_VERSION_MINOR 0
 
 #include <iostream>
