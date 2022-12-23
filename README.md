@@ -34,3 +34,14 @@
 - [x] Support for VScode
 - [x] Anti Microsoft
 - [x] Support OpenAL-Software
+
+```cpp
+#include <iostream>
+
+int main()
+{
+  std::cout << "Hello World!";
+
+  return 0;    
+}
+```
