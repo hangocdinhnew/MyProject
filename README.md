@@ -1,3 +1,14 @@
+```cpp
+#include <iostream>
+
+int main()
+{
+  std::cout << "Hello!";
+
+  return 0;    
+}
+```
+
 # MyProject
 ## The Project was no named because I want to learn more about C++ syntax and OpenGL 
 ### This project may use for commercial use and this will be a product of me maybe soon
