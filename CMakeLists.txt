@@ -18,7 +18,7 @@ set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
 project(
     MyProject
     LANGUAGES C CXX
-    VERSION 1.9.0
+    VERSION 1.9.1
     DESCRIPTION "The Greatest App Ever"
 )
 
