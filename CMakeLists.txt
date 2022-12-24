@@ -37,7 +37,6 @@ project(
     DESCRIPTION "The Greatest App Ever"
 )
 
-# Build type and options
 #ADD SOURCES
 set(MyProject_DIR_ROOT ${CMAKE_CURRENT_LIST_DIR})
 set(MyProject_DIR_SRC "${MyProject_DIR_ROOT}/src")
@@ -139,6 +138,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2 Catch2::Catch2WithM
 #Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static anylist application" TRUE)
+option(INCLUDE_OPENCV "Include OpenCV" ${INCLUDE_OPENCV})
 
 if(USE_DOXYGEN)
     if (CMAKE_BUILD_TYPE MATCHES "Release")

@@ -10,7 +10,11 @@
 #include <GLFW/glfw3.h>
 #include <imgui.h>
 
-#include <opencv2/opencv.hpp>
+#cmakedefine INCLUDE_OPENCV
+
+#ifdef INCLUDE_OPENCV
+    #include <opencv2/opencv.hpp>
+#endif
 
 #include "../Sound/SoundDevice.h"
 #include "../Sound/SoundEffectsPlayer.h"
