@@ -43,5 +43,4 @@ int main()
 - [x] Add License
 - [x] Support for CLion
 - [x] Support for VScode
-- [x] Anti Microsoft
 - [x] Support OpenAL-Software
