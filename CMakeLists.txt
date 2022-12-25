@@ -138,7 +138,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2 Catch2::Catch2WithM
 #Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static anylist application" TRUE)
-option(INCLUDE_OPENCV "Include OpenCV" ${INCLUDE_OPENCV})
+option(INCLUDE_OPENCV "Include OpenCV" FALSE)
 
 if(USE_DOXYGEN)
     if (CMAKE_BUILD_TYPE MATCHES "Release")
