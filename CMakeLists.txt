@@ -14,6 +14,12 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=clang++20")
 set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
+# Messages
+message(STATUS "Thank you for building this project!")
+message(STATUS "Use the following C++ Version ${CMAKE_CXX_STANDARD}")
+message(STATUS "")
+message(STATUS "Building the project")
+message(STATUS "")
 # Get Submodules
 find_package(Git QUIET)
 if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
