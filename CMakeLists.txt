@@ -12,7 +12,7 @@ endif ()
 set(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=clang++20")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=clang++${CMAKE_CXX_STANDARD}")
 set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
 # Messages
 message(STATUS "Thank you for building this project!")
@@ -20,6 +20,19 @@ message(STATUS "Use the following C++ Version ${CMAKE_CXX_STANDARD}")
 message(STATUS "")
 message(STATUS "Building the project")
 message(STATUS "")
+# Dylib and "a" file location
+set(STATIC_LIBRARY 
+    "~/DEV/vcpkg/installed/arm64-osx/lib/libglfw3.a"
+    "~/DEV/vcpkg/installed/arm64-osx/lib/libgl3w.a"
+    "~/DEV/vcpkg/installed/arm64-osx/lib/libglad.a"
+    "~/DEV/vcpkg/installed/arm64-osx/lib/libimgui.a"
+    "~/DEV/vcpkg/installed/arm64-osx/lib/libopenal.a"
+    "~/DEV/vcpkg/installed/arm64-osx/lib/libfreetype.a"
+)
+set_source_files_properties(${STATIC_LIBRARY}
+    PROPERTIES
+    MACOSX_PACKAGE_LOCATION Frameworks
+)
 # Get Submodules
 find_package(Git QUIET)
 if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
@@ -93,6 +106,7 @@ add_executable(${PROJECT_NAME}
     MACOSX_BUNDLE
     ${MyProject_ICON}
     ${MyProject_SOURCES}
+    ${STATIC_LIBRARY}
 )
 #Add configuration files
 configure_file(
