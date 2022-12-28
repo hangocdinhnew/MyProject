@@ -28,6 +28,8 @@ set(STATIC_LIBRARY
     "~/DEV/vcpkg/installed/arm64-osx/lib/libimgui.a"
     "~/DEV/vcpkg/installed/arm64-osx/lib/libopenal.a"
     "~/DEV/vcpkg/installed/arm64-osx/lib/libfreetype.a"
+    "~/DEV/vcpkg/installed/arm64-osx/lib/libz.a"
+    "~/DEV/vcpkg/installed/arm64-osx/lib/libpng16.a"
 )
 set_source_files_properties(${STATIC_LIBRARY}
     PROPERTIES

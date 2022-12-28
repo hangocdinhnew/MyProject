@@ -55,6 +55,7 @@ _deps
 
 # Project
 build
+build-release
 .DS_Store
 
 # CLION
