@@ -34,7 +34,7 @@ const char *fragmentShaderSource = "#version 330 core\n"
 int main(int argc, char* argv[])
 {
     /* Printing the version of the project. */
-    std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR;
+    std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR << "." << MyProject_VERSION_PATCH;
 
     /* Initializing the GLFW library. */
     glfwInit();
