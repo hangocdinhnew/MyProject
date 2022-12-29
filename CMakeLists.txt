@@ -30,6 +30,7 @@ set(STATIC_LIBRARY
     "~/DEV/vcpkg/installed/arm64-osx/lib/libfreetype.a"
     "~/DEV/vcpkg/installed/arm64-osx/lib/libz.a"
     "~/DEV/vcpkg/installed/arm64-osx/lib/libpng16.a"
+    "/opt/homebrew/lib/libglfw.3.3.dylib"
 )
 set_source_files_properties(${STATIC_LIBRARY}
     PROPERTIES
