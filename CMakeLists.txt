@@ -18,7 +18,7 @@ set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
 message(STATUS "Thank you for building this project!")
 message(STATUS "Use the following C++ Version: ${CMAKE_CXX_STANDARD}")
 message(STATUS "")
-message(STATUS "Building the project")
+message(STATUS "Building the project...")
 message(STATUS "")
 # Dylib and "a" file location
 set(STATIC_LIBRARY 
