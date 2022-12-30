@@ -16,7 +16,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=clang++${CMAKE_CXX_STANDARD}")
 set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
 # Messages
 message(STATUS "Thank you for building this project!")
-message(STATUS "Use the following C++ Version ${CMAKE_CXX_STANDARD}")
+message(STATUS "Use the following C++ Version: ${CMAKE_CXX_STANDARD}")
 message(STATUS "")
 message(STATUS "Building the project")
 message(STATUS "")
