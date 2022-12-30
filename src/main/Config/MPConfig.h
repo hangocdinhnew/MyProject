@@ -1,6 +1,6 @@
 #define MyProject_VERSION_MAJOR 1
 #define MyProject_VERSION_MINOR 9
-#define MyProject_VERSION_PATCH 2
+#define MyProject_VERSION_PATCH 3
 
 #include <iostream>
 #include <vector>
