@@ -42,6 +42,7 @@ int main(int argc, char* argv[])
     /* Sound */
     SoundDevice* sd = LISTENER->Get();
     int Music = SE_LOAD("../Resources/sound1.mp3.mpeg");
+    int Music1 = SE_LOAD("../Resources/music1.mp3");
     SoundEffectsPlayer sound_effects_player_forMusic;
 
 /* Setting the version of OpenGL to use. */
@@ -368,7 +369,9 @@ int main(int argc, char* argv[])
                         sound_effects_player_forMusic.SetLooping(false);
                     ImGui::BulletText("Music List");
                     if (ImGui::Button("Play music 1"))
-                        sound_effects_player_forMusic.Play(Music); 
+                        sound_effects_player_forMusic.Play(Music);
+                    if (ImGui::Button("Play music 2"))
+                        sound_effects_player_forMusic.Play(Music1);
                     ImGui::EndPopup();
                 }
                 ImGui::EndMenu();

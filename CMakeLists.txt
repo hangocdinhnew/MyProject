@@ -85,6 +85,7 @@ set_source_files_properties(${MyProject_ICON}
 # Set Resources
 file(GLOB_RECURSE RESOURCES_APPEND CONFIGURE_DEPENDS
     "*.ttf"
+    "*.mp3"
     "*.mp3.mpeg"
 )
 
