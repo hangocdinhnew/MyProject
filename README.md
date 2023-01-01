@@ -1,5 +1,7 @@
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
 
+# MyProject
+
 ```cpp
 #include <iostream>
 
@@ -10,8 +12,6 @@ int main()
   return 0;    
 }
 ```
-
-# MyProject
 
 ## The Project was no named because I want to learn more about C++ syntax and OpenGL
 
