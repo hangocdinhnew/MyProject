@@ -207,8 +207,6 @@ int main(int argc, char* argv[])
     bool show_another_window = false;
     bool show_text_editor = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-    // uncomment this call to draw in wireframe polygons.
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     // SD
     ALint attunation = AL_INVERSE_DISTANCE_CLAMPED;
@@ -347,9 +345,9 @@ int main(int argc, char* argv[])
                     // action if OK
                     if (ImGuiFileDialog::Instance()->IsOk())
                     {
-                    std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
-                    std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-                    // action
+                        std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
+                        std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+                        // action
                     }
                     
                     // close
@@ -388,7 +386,7 @@ int main(int argc, char* argv[])
             ImGui::Text("Hello from another window!");
             if (ImGui::Button("Close Me"))
                 show_another_window = false;
-            
+
             ImGui::End();
         }
 
