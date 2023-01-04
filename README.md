@@ -49,6 +49,6 @@ int main()
 - [ ] Make a finished editor
 - [x] Use ImGui and OpenGL
 - [x] Add License
-- [x] Support for CLion
+- [x] Remove Support For CLion and other Jetbrains IDE.
 - [x] Support for VScode
 - [x] Support OpenAL-Software
