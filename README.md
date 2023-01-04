@@ -6,7 +6,7 @@
 
 # MyProject
 
-## Celebration 1 Month of the Repo!
+
 
 ```cpp
 #include <iostream>
@@ -28,9 +28,9 @@ int main()
 <details>
   <summary>Spoiler warning</summary
   
-    ```
-    I sucks at coding
-    ```
+  ```
+  I sucks at coding
+  ```
   
 </details>
 
