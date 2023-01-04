@@ -28,9 +28,9 @@ int main()
 <details>
   <summary>Spoiler warning</summary
   
-  ```
-  I sucks at coding
-  ```
+    ```
+    I sucks at coding
+    ```
   
 </details>
 
