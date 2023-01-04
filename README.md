@@ -6,6 +6,8 @@
 
 # MyProject
 
+## Celebration 1 Month of the Repo!
+
 ```cpp
 #include <iostream>
 
