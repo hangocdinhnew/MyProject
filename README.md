@@ -55,4 +55,4 @@ int main()
 
 Other Docs:
 
-The Reasons why Jetbrains IDE support are drop: [Click here to find out](markdown/jetbrains.md)
+The Reasons why Jetbrains IDE support are drop: [Click here to find out](markdown/jetbrain.md)
