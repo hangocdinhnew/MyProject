@@ -1,9 +1,12 @@
 #!/bin/zsh
 
+set -e
+CORES_COUNT="$(sysctl -n hw.physicalcpu)"
+
 cmake -B build -G "Ninja" -DCMAKE_BUILD_TYPE="Release" -DUSE_DOXYGEN="True" -DUSE_CPPCHECK="True";
 # shellcheck disable=SC2164
 cd build;
-ninja -j8;
+ninja -j$CORES_COUNT;
 # shellcheck disable=SC2103
 cd ..;
 echo "";
