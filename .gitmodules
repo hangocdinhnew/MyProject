@@ -1,3 +1,6 @@
 [submodule "src/main/Lib/TextEditor"]
 	path = src/main/Lib/TextEditor
 	url = https://github.com/BalazsJako/ImGuiColorTextEdit
+[submodule "src/main/Lib/imguimd"]
+	path = src/main/Lib/imguimd
+	url = https://github.com/juliettef/imgui_markdown
