@@ -43,6 +43,7 @@ int main(int argc, char* argv[])
     SoundDevice* sd = LISTENER->Get();
     int Music = SE_LOAD("../Resources/sound1.mp3.mpeg");
     int Music1 = SE_LOAD("../Resources/music1.mp3");
+    int Egg1 = SE_LOAD("../Resources/egg1.mp3");
     SoundEffectsPlayer sound_effects_player_forMusic;
 
 /* Setting the version of OpenGL to use. */
@@ -361,6 +362,7 @@ int main(int argc, char* argv[])
                     // music manager
                     ImGui::BeginPopupModal("Music Manager");
                     ImGui::BulletText("Sound Looping");
+                    ImGui::Text("Use this for more good experience of easter eggs sounds.");
                     if (ImGui::Button("Yes"))
                         sound_effects_player_forMusic.SetLooping(true);
                     if (ImGui::Button("No"))
@@ -386,6 +388,9 @@ int main(int argc, char* argv[])
             ImGui::Text("Hello from another window!");
             if (ImGui::Button("Close Me"))
                 show_another_window = false;
+
+            if (ImGui::Button("SUSSY BUTTON"))
+                sound_effects_player_forMusic.Play(Egg1);
 
             ImGui::End();
         }
