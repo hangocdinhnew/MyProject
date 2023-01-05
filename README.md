@@ -7,8 +7,6 @@
 
 # MyProject
 
-## Celebrating 1 month old of the C++ Project!
-
 ```cpp
 #include <iostream>
 
