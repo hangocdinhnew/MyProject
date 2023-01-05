@@ -21,7 +21,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Installing Dependencies
-      run: brew install ninja
+      run: brew install ninja glfw3
 
     - name: Create dev directories vcpkg
       run: mkdir ~/DEV
