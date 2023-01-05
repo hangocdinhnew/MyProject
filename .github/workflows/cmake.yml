@@ -29,11 +29,17 @@ jobs:
     - name: Cloning vcpkg
       run: git clone https://github.com/microsoft/vcpkg ~/DEV/vcpkg
 
+    - name: CD to vcpkg
+      run: cd ~/DEV/vcpkg
+
     - name: Running boostrap vcpkg
       run: ~/DEV/vcpkg/bootstrap-vcpkg.sh
 
     - name: Install vcpkg dependencies
       run: ~/DEV/vcpkg/vcpkg install glfw3 imgui imgui[glfw-binding] imgui[opengl3-binding] glad gl3w opencv openal-software libsndfile freetype catch2
+    
+    - name: CD to the project
+      run: cd ${{github.workspace}}
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
