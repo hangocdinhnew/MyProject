@@ -1,0 +1,7 @@
+\page page1 GLFW
+\tableofcontents
+\section sec Project
+This project is used GLFW to display and create context using OpenGL Frameworks.
+Because it's the modern OpenGL framework and also glad use to create OpenGL pointers It's a MAGIC.
+use GLFWCreateWindow to create a window also using imgui as a front end for the backend which is OpenGL.
+MAGIC.
