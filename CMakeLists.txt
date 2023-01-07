@@ -21,7 +21,7 @@ message(STATUS "")
 message(STATUS "Building the project...")
 message(STATUS "")
 # Dylib and "a" file location
-set(STATIC_LIBRARY 
+set(STATIC_DYLIB_LIBRARY 
     "~/DEV/vcpkg/installed/arm64-osx/lib/libglfw3.a"
     "~/DEV/vcpkg/installed/arm64-osx/lib/libgl3w.a"
     "~/DEV/vcpkg/installed/arm64-osx/lib/libglad.a"
@@ -32,7 +32,7 @@ set(STATIC_LIBRARY
     "~/DEV/vcpkg/installed/arm64-osx/lib/libpng16.a"
     "/opt/homebrew/lib/libglfw.3.3.dylib"
 )
-set_source_files_properties(${STATIC_LIBRARY}
+set_source_files_properties(${STATIC_DYLIB_LIBRARY}
     PROPERTIES
     MACOSX_PACKAGE_LOCATION Frameworks
 )
@@ -109,7 +109,7 @@ add_executable(${PROJECT_NAME}
     MACOSX_BUNDLE
     ${MyProject_ICON}
     ${MyProject_SOURCES}
-    ${STATIC_LIBRARY}
+    ${STATIC_DYLIB_LIBRARY}
 )
 #Add configuration files
 configure_file(
