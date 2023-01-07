@@ -166,6 +166,10 @@ find_package(Lua REQUIRED)
 target_include_directories(${PROJECT_NAME} PRIVATE ${LUA_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${LUA_LIBRARIES})
 
+#Add zstd
+find_package(zstd CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE $<IF:$<TARGET_EXISTS:zstd::libzstd_shared>,zstd::libzstd_shared,zstd::libzstd_static>)
+
 #Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static analytics application" TRUE)
