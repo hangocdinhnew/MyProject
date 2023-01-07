@@ -1,9 +1,6 @@
 /* Including the header file MPConfig.h. */
 #include "Config/MPConfig.h"
 
-std::vector<lib::window> windows;
-lua_State *l_G = luaL_newstate();
-
 // Create framebuffer size
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 // Create Input Key
