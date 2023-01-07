@@ -389,7 +389,7 @@ int main(int argc, char* argv[])
             if (ImGui::Button("Close Me"))
                 show_another_window = false;
 
-            if (ImGui::Button("SUSSY BUTTON"))
+            if (ImGui::Button("SUSSY BUTTON")) 
                 sound_effects_player_forMusic.Play(Egg1);
 
             ImGui::End();
