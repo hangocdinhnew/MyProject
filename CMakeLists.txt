@@ -69,7 +69,6 @@ set(MyProject_CFG_APPEND
     ${MyProject_SRC_CFG_DIR}/MPConfig.h.cmake
     ${MyProject_SRC_CFG_DIR}/MPConfig.h 
 )
-
 #ADD VCPKG PREFIX PATH TO CMAKE
 set(CMAKE_PREFIX_PATH "~/DEV/vcpkg/installed/arm64-osx/share")
 # ONLY IF DIDN'T CLONE THE VCPKG
@@ -217,3 +216,20 @@ if(USE_CPPCHECK)
         endif()
     endif()
 endif()
+
+add_custom_target(Docs 
+    SOURCES 
+    README.md 
+    LICENSE
+)
+
+install(
+    TARGETS 
+    ${PROJECT_NAME} 
+    BUNDLE DESTINATION .
+)
+set(CPACK_GENERATOR "DRAGNDROP")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
+include(CPack)
+include(InstallRequiredSystemLibraries)
