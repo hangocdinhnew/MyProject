@@ -34,6 +34,8 @@
 #include <lua.h>
 #include <lauxlib.h>
 
+#include "../Lib/luacpp/Lua.hpp"
+
 #include "../Lib/imguilua/lib.hpp"
 #include "../Lib/imguilua/helper.hpp"
 #include "../Lib/imguilua/bind.hpp"
