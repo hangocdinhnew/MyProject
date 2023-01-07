@@ -170,6 +170,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ${LUA_LIBRARIES})
 find_package(zstd CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE $<IF:$<TARGET_EXISTS:zstd::libzstd_shared>,zstd::libzstd_shared,zstd::libzstd_static>)
 
+#Add 7zip
+find_package(7zip CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE 7zip::7zip)
+
 #Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static analytics application" TRUE)
