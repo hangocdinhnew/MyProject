@@ -179,6 +179,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE $<IF:$<TARGET_EXISTS:zstd::libzstd
 find_package(7zip CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE 7zip::7zip)
 
+#Add Sol2
+find_package(sol2 CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE sol2)
+
 #Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static analytics application" TRUE)
