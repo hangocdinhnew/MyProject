@@ -31,6 +31,3 @@
 #include "../Lib/TextEditor/TextEditor.h"
 #define IMGUI_ENABLE_FREETYPE
 #include "../Lua/LuaInc.h"
-#include "../Lib/imguilua/lib.hpp"
-#include "../Lib/imguilua/helper.hpp"
-#include "../Lib/imguilua/bind.hpp"

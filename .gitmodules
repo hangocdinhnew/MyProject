@@ -1,6 +1,3 @@
 [submodule "src/main/Lib/TextEditor"]
 	path = src/main/Lib/TextEditor
 	url = https://github.com/BalazsJako/ImGuiColorTextEdit
-[submodule "src/main/Lib/imguilua"]
-	path = src/main/Lib/imguilua
-	url = https://github.com/Upbolt/Lua-ImGui
