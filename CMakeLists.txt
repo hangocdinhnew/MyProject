@@ -63,7 +63,7 @@ project(
 set(MyProject_DIR_ROOT ${CMAKE_CURRENT_LIST_DIR})
 set(MyProject_DIR_SRC "${MyProject_DIR_ROOT}/src")
 set(MyProject_DIR_RES "${MyProject_DIR_ROOT}/res")
-set(MyProject_BundleApp_ResourcesDir "${CMAKE_CURRENT_BINARY_DIR}/MyProject.app/Contents/Resources/")
+set(MyProject_BundleApp_ResourcesDir "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.app/Contents/Resources/")
 set(MyProject_SRC_CFG_DIR ${MyProject_DIR_SRC}/main/Config/)
 set(MyProject_CFG_APPEND 
     ${MyProject_SRC_CFG_DIR}/MPConfig.h.cmake
@@ -86,11 +86,16 @@ file(GLOB_RECURSE RESOURCES_APPEND CONFIGURE_DEPENDS
     "*.ttf"
     "*.mp3"
     "*.mp3.mpeg"
-    "*.lua"
 )
 
 list(APPEND MyProject_Resources_FILES ${RESOURCES_APPEND})
 file(COPY ${MyProject_Resources_FILES} DESTINATION ${MyProject_BundleApp_ResourcesDir})
+# Set Lua
+file(GLOB_RECURSE LUA_APPEND CONFIGURE_DEPENDS
+    "lua/*.lua"
+)
+list(APPEND MyProject_LUA_FILES ${LUA_APPEND})
+file(COPY ${MyProject_LUA_FILES} DESTINATION ${MyProject_BundleApp_ResourcesDir})
 
 #ADD FILES_APPEND
 macro(MyProject_FILES_APPEND)
