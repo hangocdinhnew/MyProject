@@ -1,3 +1,2 @@
-function helloWorld()
-    io.write ("Hello, World!")
-end
+local str = "Hello\nWorld"
+print(str)

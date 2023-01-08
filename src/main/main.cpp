@@ -37,6 +37,8 @@ int main(int argc, char* argv[])
     std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR << "." << MyProject_VERSION_PATCH;
 
     lua_State* L = luaL_newstate();
+    luaL_openlibs(L);
+    luaL_dofile(L, "../Resources/test.lua");
 
     /* Initializing the GLFW library. */
     glfwInit();
