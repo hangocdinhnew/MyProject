@@ -86,6 +86,7 @@ file(GLOB_RECURSE RESOURCES_APPEND CONFIGURE_DEPENDS
     "*.ttf"
     "*.mp3"
     "*.mp3.mpeg"
+    "*.lua"
 )
 
 list(APPEND MyProject_Resources_FILES ${RESOURCES_APPEND})

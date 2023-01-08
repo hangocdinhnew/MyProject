@@ -30,3 +30,4 @@
 
 #include "../Lib/TextEditor/TextEditor.h"
 #define IMGUI_ENABLE_FREETYPE
+#include "../Lua/LuaInc.h"

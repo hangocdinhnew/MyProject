@@ -36,6 +36,8 @@ int main(int argc, char* argv[])
     /* Printing the version of the project. */
     std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR << "." << MyProject_VERSION_PATCH;
 
+    lua_State* L = luaL_newstate();
+
     /* Initializing the GLFW library. */
     glfwInit();
 
@@ -420,6 +422,7 @@ int main(int argc, char* argv[])
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
     glfwTerminate();
+    lua_close(L);
     return 0;
 }
 
