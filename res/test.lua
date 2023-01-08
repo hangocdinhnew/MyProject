@@ -1,2 +1,2 @@
-local str = "Hello\nWorld"
+local str = "Hello, World\n"
 print(str)
