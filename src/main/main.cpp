@@ -51,6 +51,9 @@ int main(int argc, char* argv[])
     int Egg1 = SE_LOAD("../Resources/egg1.mp3");
     SoundEffectsPlayer sound_effects_player_forMusic;
 
+     // Lua
+    luaL_dofile(L, "../Lua/main.lua");
+
 /* Setting the version of OpenGL to use. */
 #if defined(IMGUI_IMPL_OPENGL_ES2)
     // GL ES 2.0 + GLSL 100
