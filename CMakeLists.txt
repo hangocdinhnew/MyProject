@@ -188,6 +188,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE 7zip::7zip)
 find_package(sol2 CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE sol2)
 
+#Add Python
+find_package(Python3 COMPONENTS Development REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE Python3::Python)
+
 #Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static analytics application" TRUE)
