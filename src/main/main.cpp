@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
     /* Creating a new lua state, opening the standard libraries, and then loading the file test.lua. */
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
-    luaL_dofile(L, "../Resources/test.lua");
+    luaL_dofile(L, "../Lua/test.lua");
 
     /* Initializing the GLFW library. */
     glfwInit();
