@@ -96,8 +96,10 @@ file(GLOB_RECURSE LUA_APPEND CONFIGURE_DEPENDS
     "lua/*.lua"
 )
 list(APPEND MyProject_LUA_FILES ${LUA_APPEND})
-file(MAKE_DIRECTORY "${MyProject_LUA_DIRECTORY}")
-file(COPY ${MyProject_LUA_FILES} DESTINATION ${MyProject_LUA_DIRECTORY})
+set_source_files_properties(${MyProject_LUA_FILES}
+    PROPERTIES
+    MACOSX_PACKAGE_LOCATION "Lua"
+)
 
 #ADD FILES_APPEND
 macro(MyProject_FILES_APPEND)
@@ -117,6 +119,7 @@ add_executable(${PROJECT_NAME}
     MACOSX_BUNDLE
     ${MyProject_ICON}
     ${MyProject_SOURCES}
+    ${MyProject_LUA_FILES}
     ${STATIC_DYLIB_LIBRARY}
 )
 #Add configuration files
