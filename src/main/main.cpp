@@ -44,15 +44,15 @@ int main(int argc, char* argv[])
     /* Initializing the GLFW library. */
     glfwInit();
 
+    // Lua
+    luaL_dofile(L, "../Lua/main.lua");
+
     /* Sound */
     SoundDevice* sd = LISTENER->Get();
     int Music = SE_LOAD("../Resources/sound1.mp3.mpeg");
     int Music1 = SE_LOAD("../Resources/music1.mp3");
     int Egg1 = SE_LOAD("../Resources/egg1.mp3");
     SoundEffectsPlayer sound_effects_player_forMusic;
-
-     // Lua
-    luaL_dofile(L, "../Lua/main.lua");
 
 /* Setting the version of OpenGL to use. */
 #if defined(IMGUI_IMPL_OPENGL_ES2)
