@@ -16,6 +16,12 @@
     #include <opencv2/opencv.hpp>
 #endif
 
+#cmakedefine JSON_USE_IMPLICIT_CONVERSIONS
+
+#ifdef JSON_USE_IMPLICIT_CONVERSIONS
+    #define JSON_USE_IMPLICIT_CONVERSIONS 1
+#endif
+
 #include "../Sound/SoundDevice.h"
 #include "../Sound/SoundEffectsPlayer.h"
 #include "../Sound/SoundEffectsLibrary.h"

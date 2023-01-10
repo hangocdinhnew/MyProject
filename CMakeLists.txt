@@ -192,10 +192,15 @@ target_link_libraries(${PROJECT_NAME} PRIVATE sol2)
 find_package(Python3 COMPONENTS Development REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE Python3::Python)
 
+#Add Nlohmann Json
+find_package(nlohmann_json CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
+
 #Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static analytics application" TRUE)
 option(INCLUDE_OPENCV "Include OpenCV" FALSE)
+option(JSON_USE_IMPLICIT_CONVERSIONS "Use implict conversations" ${JSON_USE_IMPLICIT_CONVERSIONS})
 
 if(USE_DOXYGEN)
     if (CMAKE_BUILD_TYPE MATCHES "Release")
