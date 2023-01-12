@@ -54,10 +54,6 @@ int main()
 - [x] Support for VScode
 - [x] Support OpenAL-Software
 
-Other Docs:
-
-The Reasons why Jetbrains IDE support are drop: [Click here to find out](markdown/jetbrain.md)
-
 Demo Screenshots:
 <img width="1552" alt="Screenshot 2023-01-08 at 13 42 43" src="https://user-images.githubusercontent.com/114002226/211183938-56d46321-9de2-4649-a038-1f8f4fcd11ff.png">
 
