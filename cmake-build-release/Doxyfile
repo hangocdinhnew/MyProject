@@ -1,0 +1,2 @@
+INPUT                  =  /Users/dinhndrwmacbook/DEV/C++/MyProject/docs /Users/dinhndrwmacbook/DEV/C++/MyProject/src/main/
+OUTPUT_DIRECTORY       = /Users/dinhndrwmacbook/DEV/C++/MyProject/cmake-build-release/doc_doxygen/

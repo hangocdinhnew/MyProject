@@ -1,0 +1,13 @@
+waiting to take filesystem lock on /Users/dinhndrwmacbook/DEV/vcpkg/.vcpkg-root...
+Detecting compiler hash for triplet arm64-osx...
+The following packages will be built and installed:
+    stb[core]:arm64-osx -> 2021-09-10#1
+Restored 1 package(s) from /Users/dinhndrwmacbook/.cache/vcpkg/archives in 16.24 ms. Use --debug to see more details.
+Installing 1/1 stb:arm64-osx...
+Elapsed time to handle stb:arm64-osx: 4.298 ms
+Total install time: 20.55 ms
+stb is header-only and can be used from CMake via:
+
+    find_path(STB_INCLUDE_DIRS "stb_c_lexer.h")
+    target_include_directories(main PRIVATE ${STB_INCLUDE_DIRS})
+
