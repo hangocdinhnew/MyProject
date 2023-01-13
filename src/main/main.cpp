@@ -41,6 +41,13 @@ int main(int argc, char* argv[])
     luaL_openlibs(L);
     luaL_dofile(L, "../Lua/test.lua");
 
+    // Initializing Chaiscript
+    chaiscript::ChaiScript chai;
+    chai.eval(R"(
+        puts("Chaiscript initialized.\n");
+        puts("\n");
+    )");
+
     /* Initializing the GLFW library. */
     glfwInit();
 
