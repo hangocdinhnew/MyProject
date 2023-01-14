@@ -56,9 +56,8 @@ int main()
     
 #### Q&A
 Q: Will you give up this project
+    
 A: Never gonna give up
-
-<img src="https://quotecard.cyclic.app/api?theme=red" width="100%" height="100%"><br/>    
 
 
 Demo Screenshots:
