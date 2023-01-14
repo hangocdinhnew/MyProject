@@ -2,7 +2,8 @@
 #include "Config/MPConfig.h"
 
 // Create framebuffer size
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void framebuffer_size_callback(GLFWwindow *window, int width, int height);
+
 // Create Input Key
 void processInput(GLFWwindow *window);
 
@@ -12,18 +13,18 @@ const unsigned int SCR_HEIGHT = 1080;
 
 /* The above code is a vertex shader. It is a program that runs on the GPU. It is written in GLSL. */
 const char *vertexShaderSource = "#version 330 core\n"
-    "layout (location = 0) in vec3 aPos;\n"
-    "void main()\n"
-    "{\n"
-    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-    "}\0";
+                                 "layout (location = 0) in vec3 aPos;\n"
+                                 "void main()\n"
+                                 "{\n"
+                                 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+                                 "}\0";
 /* The above code is creating a fragment shader. */
 const char *fragmentShaderSource = "#version 330 core\n"
-    "out vec4 FragColor;\n"
-    "void main()\n"
-    "{\n"
-    "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-    "}\n\0";
+                                   "out vec4 FragColor;\n"
+                                   "void main()\n"
+                                   "{\n"
+                                   "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+                                   "}\n\0";
 
 /**
  * The main function.
@@ -31,13 +32,13 @@ const char *fragmentShaderSource = "#version 330 core\n"
  * @param argc the number of arguments passed to the program
  * @param argv the array of strings that are the command line arguments
  */
-int main(int argc, char* argv[])
-{
+int main(int argc, char *argv[]) {
     /* Printing the version of the project. */
-    std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR << "." << MyProject_VERSION_PATCH;
+    std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR << "."
+              << MyProject_VERSION_PATCH;
 
     /* Creating a new lua state, opening the standard libraries, and then loading the file test.lua. */
-    lua_State* L = luaL_newstate();
+    lua_State *L = luaL_newstate();
     luaL_openlibs(L);
     luaL_dofile(L, "../Lua/test.lua");
 
@@ -52,7 +53,7 @@ int main(int argc, char* argv[])
     glfwInit();
 
     /* Sound */
-    SoundDevice* sd = LISTENER->Get();
+    SoundDevice *sd = LISTENER->Get();
     int Music = SE_LOAD("../Resources/sound1.mp3.mpeg");
     int Music1 = SE_LOAD("../Resources/music1.mp3");
     int Egg1 = SE_LOAD("../Resources/egg1.mp3");
@@ -73,7 +74,7 @@ int main(int argc, char* argv[])
     glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
 #elif defined(__APPLE__)
     // GL 3.2 + GLSL 150
-    const char* glsl_version = "#version 150";
+    const char *glsl_version = "#version 150";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // 3.2+ only
@@ -88,10 +89,9 @@ int main(int argc, char* argv[])
 #endif
 
     /* Creating a window with the title "MyApp" and the dimensions of SCR_WIDTH and SCR_HEIGHT. */
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "MyApp", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "MyApp", NULL, NULL);
     /* Creating a window and checking if it was created successfully. */
-    if (window == NULL)
-    {
+    if (window == NULL) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return -1;
@@ -106,19 +106,17 @@ int main(int argc, char* argv[])
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     /* Loading the OpenGL function pointers. */
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
+    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
 
     /* GL3W */
-    for (int i = 0; i < 100; ++i) 
-    {
-        if (gl3wInit()) 
+    for (int i = 0; i < 100; ++i) {
+        if (gl3wInit())
             return 3;
     }
-    if (!gl3wIsSupported(3, 3)) 
+    if (!gl3wIsSupported(3, 3))
         return 4;
 
     /* *|MARKER_CURSOR|* */
@@ -130,8 +128,7 @@ int main(int argc, char* argv[])
     int success;
     char infoLog[512];
     glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-    if (!success)
-    {
+    if (!success) {
         glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
@@ -144,8 +141,7 @@ int main(int argc, char* argv[])
     glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
     /* The above code is checking to see if the fragment shader compiled successfully. If it did not, it
     prints out the error message. */
-    if (!success)
-    {
+    if (!success) {
         glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
@@ -166,10 +162,10 @@ int main(int argc, char* argv[])
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
-        -0.5f, -0.5f, 0.0f, // left  
-         0.5f, -0.5f, 0.0f, // right 
-         0.0f,  0.5f, 0.0f  // top   
-    }; 
+            -0.5f, -0.5f, 0.0f, // left
+            0.5f, -0.5f, 0.0f, // right
+            0.0f, 0.5f, 0.0f  // top
+    };
 
     unsigned int VBO, VAO;
     glGenVertexArrays(1, &VAO);
@@ -180,20 +176,21 @@ int main(int argc, char* argv[])
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *) 0);
     glEnableVertexAttribArray(0);
 
     // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
-    glBindBuffer(GL_ARRAY_BUFFER, 0); 
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
     // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
-    glBindVertexArray(0); 
+    glBindVertexArray(0);
 
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    ImGuiIO &io = ImGui::GetIO();
+    (void) io;
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
@@ -204,7 +201,7 @@ int main(int argc, char* argv[])
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
-    
+
     // Load Fonts
     // - If no fonts are loaded, dear imgui will use the default font. You can also load multiple fonts and use ImGui::PushFont()/PopFont() to select them.
     // - AddFontFromFileTTF() will return the ImFont* so you can store it if you need to select the font among multiple.
@@ -218,7 +215,8 @@ int main(int argc, char* argv[])
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/DroidSans.ttf", 16.0f);
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Roboto-Medium.ttf", 16.0f);
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Cousine-Regular.ttf", 15.0f);
-    ImFont* font = io.Fonts->AddFontFromFileTTF("../Resources/font.ttf", 18.0f, NULL, io.Fonts->GetGlyphRangesJapanese());
+    ImFont *font = io.Fonts->AddFontFromFileTTF("../Resources/font.ttf", 18.0f, NULL,
+                                                io.Fonts->GetGlyphRangesJapanese());
     IM_ASSERT(font != NULL);
 
     // Our state
@@ -229,15 +227,14 @@ int main(int argc, char* argv[])
 
     // SD
     ALint attunation = AL_INVERSE_DISTANCE_CLAMPED;
-	sd->SetAttunation(attunation);
-	sd->SetLocation(0.f, 0.f, 0.f);
-	sd->SetOrientation(0.f, 1.f, 0.f, 0.f, 0.f, 1.f);
+    sd->SetAttunation(attunation);
+    sd->SetLocation(0.f, 0.f, 0.f);
+    sd->SetOrientation(0.f, 1.f, 0.f, 0.f, 0.f, 1.f);
     sound_effects_player_forMusic.SetLooping(false);
 
     // render loop
     // -----------
-    while (!glfwWindowShouldClose(window))
-    {
+    while (!glfwWindowShouldClose(window)) {
         // input
         // -----
         processInput(window);
@@ -250,20 +247,16 @@ int main(int argc, char* argv[])
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-        if (show_text_editor)
-        {
+        if (show_text_editor) {
             static TextEditor editor;
-            static const char* fileToEdit = "helloworld.cpp";
+            static const char *fileToEdit = "helloworld.cpp";
             editor.SetLanguageDefinition(TextEditor::LanguageDefinition::CPlusPlus());
             auto cpos = editor.GetCursorPosition();
             ImGui::Begin("Text Editor", nullptr, ImGuiWindowFlags_HorizontalScrollbar | ImGuiWindowFlags_MenuBar);
             ImGui::SetWindowSize(ImVec2(800, 600), ImGuiCond_FirstUseEver);
-            if (ImGui::BeginMenuBar())
-            {
-                if (ImGui::BeginMenu("File"))
-                {
-                    if (ImGui::MenuItem("Save"))
-                    {
+            if (ImGui::BeginMenuBar()) {
+                if (ImGui::BeginMenu("File")) {
+                    if (ImGui::MenuItem("Save")) {
                         auto textToSave = editor.GetText();
                         /// save text....
                     }
@@ -271,8 +264,7 @@ int main(int argc, char* argv[])
                         break;
                     ImGui::EndMenu();
                 }
-                if (ImGui::BeginMenu("Edit"))
-                {
+                if (ImGui::BeginMenu("Edit")) {
                     bool ro = editor.IsReadOnly();
                     if (ImGui::MenuItem("Read-only mode", nullptr, &ro))
                         editor.SetReadOnly(ro);
@@ -297,13 +289,13 @@ int main(int argc, char* argv[])
                     ImGui::Separator();
 
                     if (ImGui::MenuItem("Select all", nullptr, nullptr))
-                        editor.SetSelection(TextEditor::Coordinates(), TextEditor::Coordinates(editor.GetTotalLines(), 0));
+                        editor.SetSelection(TextEditor::Coordinates(),
+                                            TextEditor::Coordinates(editor.GetTotalLines(), 0));
 
                     ImGui::EndMenu();
                 }
 
-                if (ImGui::BeginMenu("View"))
-                {
+                if (ImGui::BeginMenu("View")) {
                     if (ImGui::MenuItem("Dark palette"))
                         editor.SetPalette(TextEditor::GetDarkPalette());
                     if (ImGui::MenuItem("Light palette"))
@@ -314,11 +306,12 @@ int main(int argc, char* argv[])
                 }
                 ImGui::EndMenuBar();
 
-		    }
-            ImGui::Text("%6d/%-6d %6d lines  | %s | %s | %s | %s", cpos.mLine + 1, cpos.mColumn + 1, editor.GetTotalLines(),
-                editor.IsOverwrite() ? "Ovr" : "Ins",
-                editor.CanUndo() ? "*" : " ",
-                editor.GetLanguageDefinition().mName.c_str(), fileToEdit);
+            }
+            ImGui::Text("%6d/%-6d %6d lines  | %s | %s | %s | %s", cpos.mLine + 1, cpos.mColumn + 1,
+                        editor.GetTotalLines(),
+                        editor.IsOverwrite() ? "Ovr" : "Ins",
+                        editor.CanUndo() ? "*" : " ",
+                        editor.GetLanguageDefinition().mName.c_str(), fileToEdit);
 
             editor.Render("TextEditor");
         }
@@ -326,52 +319,54 @@ int main(int argc, char* argv[])
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
-        
+
         // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
         {
             static float f = 0.0f;
             static int counter = 0;
 
-            ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+            ImGui::Begin(
+                    "Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
-            ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+            ImGui::Text(
+                    "This is some useful text.");               // Display some text (you can use a format strings too)
             ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
             ImGui::Checkbox("Another Window", &show_another_window);
             ImGui::Checkbox("File Editor", &show_text_editor);
 
             ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-            ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+            ImGui::ColorEdit3("clear color", (float *) &clear_color); // Edit 3 floats representing a color
 
-            if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+            if (ImGui::Button(
+                    "Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
                 counter++;
             ImGui::SameLine();
             ImGui::Text("counter = %d", counter);
-            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
+                        ImGui::GetIO().Framerate);
             ImGui::End();
 
             ImGui::BeginMainMenuBar();
             //File Manager
-            if (ImGui::BeginMenu("File"))
-            {
+            if (ImGui::BeginMenu("File")) {
                 if (ImGui::BeginMenu("Open")) {
-                    ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".", 1, nullptr, ImGuiFileDialogFlags_Modal);
+                    ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".", 1,
+                                                            nullptr, ImGuiFileDialogFlags_Modal);
                     ImGui::EndMenu();
                 }
 
                 // display
-                if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey")) 
-                {
+                if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey")) {
                     // action if OK
-                    if (ImGuiFileDialog::Instance()->IsOk())
-                    {
+                    if (ImGuiFileDialog::Instance()->IsOk()) {
                         std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                         std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
                         // action
                     }
-                    
+
                     // close
                     ImGuiFileDialog::Instance()->Close();
-                } 
+                }
 
                 ImGui::EndMenu();
             }
@@ -394,20 +389,20 @@ int main(int argc, char* argv[])
                 }
                 ImGui::EndMenu();
             }
-            
+
             ImGui::EndMainMenuBar();
 
         }
 
         // 3. Show another simple window.
-        if (show_another_window)
-        {
-            ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+        if (show_another_window) {
+            ImGui::Begin("Another Window",
+                         &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
             ImGui::Text("Hello from another window!");
             if (ImGui::Button("Close Me"))
                 show_another_window = false;
 
-            if (ImGui::Button("SUSSY BUTTON")) 
+            if (ImGui::Button("SUSSY BUTTON"))
                 sound_effects_player_forMusic.Play(Egg1);
 
             ImGui::End();
@@ -418,7 +413,8 @@ int main(int argc, char* argv[])
         int display_w, display_h;
         glfwGetFramebufferSize(window, &display_w, &display_h);
         glViewport(0, 0, display_w, display_h);
-        glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
+        glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w,
+                     clear_color.w);
         glClear(GL_COLOR_BUFFER_BIT);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
@@ -450,8 +446,7 @@ int main(int argc, char* argv[])
  * @param window The window whose size, position, or video mode was changed.
  */
 
-void processInput(GLFWwindow *window)
-{
+void processInput(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 }
@@ -463,8 +458,7 @@ void processInput(GLFWwindow *window)
  * @param width the width of the framebuffer in pixels
  * @param height the height of the framebuffer in pixels
  */
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
+void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
     // make sure the viewport matches the new window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
