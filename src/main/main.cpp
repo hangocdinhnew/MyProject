@@ -439,6 +439,7 @@ int main(int argc, char* argv[])
     // ------------------------------------------------------------------
     glfwTerminate();
     lua_close(L);
+    Py_Finalize();
     return 0;
 }
 
