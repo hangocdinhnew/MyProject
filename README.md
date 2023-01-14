@@ -53,6 +53,13 @@ int main()
 - [x] Adding support for Jetbrains IDE.
 - [x] Support for VScode.
 - [x] Support OpenAL-Software.
+    
+#### Q&A
+Q: Will you give up this project
+A: Never gonna give up
+
+<img src="https://quotecard.cyclic.app/api?theme=red" width="100%" height="100%"><br/>    
+
 
 Demo Screenshots:
 <img width="1552" alt="Screenshot 2023-01-08 at 13 42 43" src="https://user-images.githubusercontent.com/114002226/211183938-56d46321-9de2-4649-a038-1f8f4fcd11ff.png">
