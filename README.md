@@ -55,9 +55,9 @@ int main()
 - [x] Support OpenAL-Software.
     
 #### Q&A
-Q: Will you give up this project
+- Q: Will you give up this project
     
-A: Never gonna give up
+- A: Never gonna give up
 
 
 Demo Screenshots:
