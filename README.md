@@ -28,7 +28,7 @@ int main()
   <summary>Spoiler warning</summary
   
   ```
-  I sucks at coding
+  <img src="https://discordapp.com/api/guilds/1033018861274009620/widget.png?style=banner4" alt="Discord Banner 4"/>
   ```
   
 </details>
