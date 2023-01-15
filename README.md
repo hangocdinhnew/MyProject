@@ -28,7 +28,7 @@ int main()
   <summary>Spoiler warning</summary
   
   ```
-  <img src="https://discordapp.com/api/guilds/1033018861274009620/widget.png?style=banner4" alt="Discord Banner 4"/>
+  **I sucks at coding**
   ```
   
 </details>
@@ -39,7 +39,7 @@ int main()
   <summary>Discord</summary>
   
   ```
-  https://discord.gg/chAZemrxC5
+  <img src="https://discordapp.com/api/guilds/1033018861274009620/widget.png?style=banner4" alt="Discord Banner 4"/>
   ```
   
 </details>
