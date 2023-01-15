@@ -38,7 +38,7 @@ int main()
 <details>
   <summary>Discord</summary>
   
-  <img src="https://discordapp.com/api/guilds/1033018861274009620/widget.png?style=banner4" alt="Discord Banner 4"/>
+  [![](https://dcbadge.vercel.app/api/server/chAZemrxC5)](https://discord.gg/chAZemrxC5)
   
 </details>
 
