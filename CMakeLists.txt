@@ -69,6 +69,7 @@ set(MyProject_CFG_APPEND
     ${MyProject_SRC_CFG_DIR}/MPConfig.h.cmake
     ${MyProject_SRC_CFG_DIR}/MPConfig.h 
 )
+set(MyProject_LUA_SOURCE_DIR "${MyProject_DIR_SRC}/lua")
 set(MyProject_LUA_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.app/Contents/Lua")
 #ADD VCPKG PREFIX PATH TO CMAKE
 set(CMAKE_PREFIX_PATH "~/DEV/vcpkg/installed/arm64-osx/share")
@@ -93,7 +94,7 @@ list(APPEND MyProject_Resources_FILES ${RESOURCES_APPEND})
 file(COPY ${MyProject_Resources_FILES} DESTINATION ${MyProject_BundleApp_ResourcesDir})
 # Set Lua
 file(GLOB_RECURSE LUA_APPEND CONFIGURE_DEPENDS
-    "lua/*.lua"
+    "${MyProject_LUA_SOURCE_DIR}/*.lua"
 )
 list(APPEND MyProject_LUA_FILES ${LUA_APPEND})
 set_source_files_properties(${MyProject_LUA_FILES}
