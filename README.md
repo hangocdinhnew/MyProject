@@ -45,7 +45,7 @@ int main()
 - [x] Support for VScode.
 - [x] Support OpenAL-Software.
 
-#### New Banner:
+#### Other stuffs:
 [New banner](md/banner.md)
 
 #### Demo Screenshots:
