@@ -1,4 +1,4 @@
-![banner](https://user-images.githubusercontent.com/114002226/213372300-f5ce4ae3-ec8d-4f4a-9d44-e83f144b2231.png)
+![banner](https://user-images.githubusercontent.com/114002226/213379441-74cea420-42bf-4512-9c38-5f5c4ab4229d.png)
 
 # MyProject
 
