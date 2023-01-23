@@ -1,6 +1,13 @@
-![banner](https://user-images.githubusercontent.com/114002226/213379441-74cea420-42bf-4512-9c38-5f5c4ab4229d.png)
+# Stand For Ukraine
+
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://www.unicefusa.org/stories/unicef-children-crossfire-ukraine-crisis/39542?utm_campaign=20220225_Emergencies&utm_medium=Organic&utm_source=UkraineWebStoryChildrenFeb2022&utm_content=LearnMoreUkraineWebStoryChildrenFeb2022&ms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none&initialms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none)
+[![Russian Warship Go Fuck Yourself](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/RussianWarship.svg)](https://www.unicefusa.org/stories/unicef-children-crossfire-ukraine-crisis/39542?utm_campaign=20220225_Emergencies&utm_medium=Organic&utm_source=UkraineWebStoryChildrenFeb2022&utm_content=LearnMoreUkraineWebStoryChildrenFeb2022&ms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none&initialms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none)
+
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://www.unicefusa.org/stories/unicef-children-crossfire-ukraine-crisis/39542?utm_campaign=20220225_Emergencies&utm_medium=Organic&utm_source=UkraineWebStoryChildrenFeb2022&utm_content=LearnMoreUkraineWebStoryChildrenFeb2022&ms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none&initialms=Organic_PRL_2022_Emergencies_20220225_UkraineWebStoryChildrenFeb2022_LearnMoreUkraineWebStoryChildrenFeb2022_none_none)
 
 # MyProject
+
+![banner](https://user-images.githubusercontent.com/114002226/213379441-74cea420-42bf-4512-9c38-5f5c4ab4229d.png)
 
 ```cpp
 #include <iostream>
