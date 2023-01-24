@@ -20,7 +20,7 @@ int main()
 }
 ```
 
-## The Project was no named because I want to learn more about C++ syntax and OpenGL
+## The C++ OpenGL M1 Mac Template
 
 #### SPOILERS
 
