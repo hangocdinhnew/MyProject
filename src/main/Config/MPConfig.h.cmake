@@ -37,6 +37,5 @@
 #include "../Lib/TextEditor/TextEditor.h"
 #define IMGUI_ENABLE_FREETYPE
 #include "../Lua/LuaInc.h"
-#include "../Python/PyInc.h"
 #include <chaiscript/chaiscript.hpp>
 #include "../Lib/LibVLC/vlc/libvlc.h"

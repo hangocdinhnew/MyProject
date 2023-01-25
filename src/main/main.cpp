@@ -62,9 +62,6 @@ int main(int argc, char *argv[]) {
     // Lua
     luaL_dofile(L, "../Lua/main.lua");
 
-    // Python
-    Py_Initialize();
-
 /* Setting the version of OpenGL to use. */
 #if defined(IMGUI_IMPL_OPENGL_ES2)
     // GL ES 2.0 + GLSL 100
@@ -435,7 +432,6 @@ int main(int argc, char *argv[]) {
     // ------------------------------------------------------------------
     glfwTerminate();
     lua_close(L);
-    Py_Finalize();
     return 0;
 }
 

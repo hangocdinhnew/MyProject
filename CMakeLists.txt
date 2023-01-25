@@ -20,22 +20,6 @@ message(STATUS "Use the following C++ Version: ${CMAKE_CXX_STANDARD}")
 message(STATUS "")
 message(STATUS "Building the project...")
 message(STATUS "")
-# Dylib and "a" file location
-set(STATIC_DYLIB_LIBRARY 
-    "~/DEV/vcpkg/installed/arm64-osx/lib/libglfw3.a"
-    "~/DEV/vcpkg/installed/arm64-osx/lib/libgl3w.a"
-    "~/DEV/vcpkg/installed/arm64-osx/lib/libglad.a"
-    "~/DEV/vcpkg/installed/arm64-osx/lib/libimgui.a"
-    "~/DEV/vcpkg/installed/arm64-osx/lib/libopenal.a"
-    "~/DEV/vcpkg/installed/arm64-osx/lib/libfreetype.a"
-    "~/DEV/vcpkg/installed/arm64-osx/lib/libz.a"
-    "~/DEV/vcpkg/installed/arm64-osx/lib/libpng16.a"
-    "/opt/homebrew/lib/libglfw.3.3.dylib"
-)
-set_source_files_properties(${STATIC_DYLIB_LIBRARY}
-    PROPERTIES
-    MACOSX_PACKAGE_LOCATION Frameworks
-)
 # Get Submodules
 find_package(Git QUIET)
 if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
@@ -121,7 +105,6 @@ add_executable(${PROJECT_NAME}
     ${MyProject_ICON}
     ${MyProject_SOURCES}
     ${MyProject_LUA_FILES}
-    ${STATIC_DYLIB_LIBRARY}
 )
 #Add configuration files
 configure_file(
@@ -189,10 +172,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE 7zip::7zip)
 find_package(sol2 CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE sol2)
 
-#Add Python
-find_package(Python3 COMPONENTS Development REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE Python3::Python)
-
 #Add Nlohmann Json
 find_package(nlohmann_json CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
@@ -242,6 +221,10 @@ if(USE_CPPCHECK)
     endif()
 endif()
 
+set(DIRS "${CMAKE_CURRENT_BINARY_DIR}")
+set(APPS "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.app")
+set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}")
+
 add_custom_target(Docs 
     SOURCES 
     README.md 
@@ -253,6 +236,14 @@ install(
     ${PROJECT_NAME} 
     BUNDLE DESTINATION .
 )
+
+
+INSTALL(CODE "
+   include(BundleUtilities)
+   fixup_bundle(\"${APPS}\"   \"\"   \"${DIRS}\")
+   " COMPONENT Runtime
+)
+
 set(CPACK_GENERATOR "DRAGNDROP")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
 set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
