@@ -20,7 +20,7 @@ int main()
 }
 ```
 
-## The C++ OpenGL M1 Mac Template
+## The C++ OpenGL Game-Engine and Software M1 Mac Template
 
 #### SPOILERS
 
