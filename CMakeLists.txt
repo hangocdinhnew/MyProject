@@ -39,7 +39,7 @@ endif()
 project(
     MyProject
     LANGUAGES C CXX
-    VERSION 1.9.5
+    VERSION 1.9.6
     DESCRIPTION "The Greatest App Ever"
 )
 
