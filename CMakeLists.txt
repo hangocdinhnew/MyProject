@@ -12,7 +12,11 @@ endif ()
 set(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=clang++${CMAKE_CXX_STANDARD}")
+add_compile_options(${CMAKE_CXX_FLAGS})
+add_definitions(-std=gnu++${CMAKE_CXX_STANDARD})
+set(compile_flags "
+  ${add_definitions}
+")
 set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
 # Messages
 message(STATUS "Thank you for building this project!")
@@ -105,6 +109,11 @@ add_executable(${PROJECT_NAME}
     ${MyProject_ICON}
     ${MyProject_SOURCES}
     ${MyProject_LUA_FILES}
+)
+set_target_properties(
+  ${PROJECT_NAME}
+  PROPERTIES 
+  COMPILE_FLAGS "${compile_flags}"
 )
 #Add configuration files
 configure_file(
