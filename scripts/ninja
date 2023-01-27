@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+CORES_COUNT="$(sysctl -n hw.physicalcpu)"
+
+cd build;
+ninja -j$CORES_COUNT;
+cd ..
