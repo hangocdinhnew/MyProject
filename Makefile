@@ -1,5 +1,5 @@
 all:
-	./scripts/configure
+	./scripts/all
 
 cmake: 
 	./scripts/cmake
