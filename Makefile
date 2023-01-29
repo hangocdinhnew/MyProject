@@ -9,3 +9,4 @@ ninja:
 
 install:
 	./scripts/install
+.PHONY: all
