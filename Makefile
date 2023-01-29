@@ -1,12 +1,13 @@
 all:
-	./scripts/all
+	@./scripts/all
 
 cmake: 
-	./scripts/cmake
+	@./scripts/cmake
 
 ninja:
-	./scripts/ninja
+	@./scripts/ninja
 
 install:
-	./scripts/install
+	@./scripts/install
+
 .PHONY: all
