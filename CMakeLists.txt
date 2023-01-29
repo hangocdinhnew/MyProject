@@ -13,10 +13,10 @@ set(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options(${CMAKE_CXX_FLAGS})
-add_definitions(-std=gnu++${CMAKE_CXX_STANDARD})
 set(compile_flags "
   ${add_definitions}
 ")
+set(TARGET tgt PROPERTY CXX_STANDARD ${CMAKE_CXX_STANDARD})
 set(CMAKE_TOOLCHAIN_FILE "~/DEV/vcpkg/scripts/buildsystems/vcpkg.cmake")
 # Messages
 message(STATUS "Thank you for building this project!")
