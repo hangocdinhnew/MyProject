@@ -35,8 +35,7 @@ const char *fragmentShaderSource = "#version 330 core\n"
 int main(int argc, char *argv[])
 {
     /* Printing the version of the project. */
-    std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR << "."
-              << MyProject_VERSION_PATCH;
+    std::cout << "Version: " << MyProject_VERSION_MAJOR << "." << MyProject_VERSION_MINOR << "." << MyProject_VERSION_PATCH;
 
     /* Creating a new lua state, opening the standard libraries, and then loading the file test.lua. */
     lua_State *L = luaL_newstate();
