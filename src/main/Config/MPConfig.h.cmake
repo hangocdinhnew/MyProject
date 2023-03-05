@@ -40,3 +40,5 @@
 # include "../Lua/LuaInc.h"
 # include <chaiscript/chaiscript.hpp>
 # include "../Lib/LibVLC/vlc/libvlc.h"
+# include "../Lib/LibVLC/vlc/libvlc_media_player.h"
+# include "../Lib/LibVLC/vlc/libvlc_media.h"
