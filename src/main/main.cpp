@@ -232,10 +232,6 @@ int main(int argc, char *argv[])
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // SD
-    ALint attunation = AL_INVERSE_DISTANCE_CLAMPED;
-    sd->SetAttunation(attunation);
-    sd->SetLocation(0.f, 0.f, 0.f);
-    sd->SetOrientation(0.f, 1.f, 0.f, 0.f, 0.f, 1.f);
     sound_effects_player_forMusic.SetLooping(false);
 
     // render loop
