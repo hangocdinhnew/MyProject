@@ -201,6 +201,14 @@ target_link_libraries(${PROJECT_NAME} PRIVATE sol2)
 find_package(nlohmann_json CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
 
+# Add Assimp
+find_package(assimp CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE assimp::assimp)
+
+# Add SOIL
+find_package(soil CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE soil)
+
 # Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static analytics application" TRUE)
