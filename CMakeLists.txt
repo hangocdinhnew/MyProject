@@ -174,8 +174,8 @@ find_package(freetype CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE freetype)
 
 # Add Unit Testing Framework
-find_package(Catch2 CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2 Catch2::Catch2WithMain)
+# find_package(Catch2 CONFIG REQUIRED)
+# target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2 Catch2::Catch2WithMain)
 
 # find_package(GTest CONFIG REQUIRED)
 # target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
