@@ -1,6 +1,3 @@
 [submodule "src/main/Lib/TextEditor"]
 	path = src/main/Lib/TextEditor
 	url = https://github.com/BalazsJako/ImGuiColorTextEdit
-[submodule "src/lua/Lib/ansicolors"]
-	path = src/lua/Lib/ansicolors
-	url = https://github.com/kikito/ansicolors.lua
