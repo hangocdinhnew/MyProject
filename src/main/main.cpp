@@ -239,6 +239,7 @@ int main(int argc, char *argv[])
     std::cout << ""
               << "OpenGL Shading Language Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
     std::cout << "" << std::endl;
+
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
