@@ -1,2 +1,10 @@
-INPUT                  =  @CMAKE_CURRENT_SOURCE_DIR@/docs @CMAKE_CURRENT_SOURCE_DIR@/src/main/
-OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc_doxygen/
+# Doxyfile.in - configuration file for Doxygen
+
+# Source directories
+INPUT                  =  @CMAKE_CURRENT_SOURCE_DIR@/docs \
+                          @CMAKE_CURRENT_SOURCE_DIR@/src/main
+
+# Output directory for generated documentation
+OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc_doxygen
+
+# Other configuration options...
