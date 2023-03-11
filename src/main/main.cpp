@@ -1,12 +1,6 @@
 /* Including the header file MPConfig.h. */
 #include "Config/MPConfig.h"
 
-// Create framebuffer size
-void framebuffer_size_callback(GLFWwindow *window, int width, int height);
-
-// Create Input Key
-void processInput(GLFWwindow *window);
-
 /* Defining the width and height of the screen. */
 const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1080;
@@ -245,7 +239,6 @@ int main(int argc, char *argv[])
     std::cout << ""
               << "OpenGL Shading Language Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
     std::cout << "" << std::endl;
-
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
@@ -460,31 +453,4 @@ int main(int argc, char *argv[])
     glfwTerminate();
     lua_close(L);
     return 0;
-}
-
-/**
- * It tells OpenGL the size of the rendering window so OpenGL knows how we want to display the data and
- * coordinates with respect to the window
- *
- * @param window The window whose size, position, or video mode was changed.
- */
-
-void processInput(GLFWwindow *window)
-{
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-}
-
-/**
- * Whenever the window is resized, the viewport is set to match the new window dimensions
- *
- * @param window The window that received the event.
- * @param width the width of the framebuffer in pixels
- * @param height the height of the framebuffer in pixels
- */
-void framebuffer_size_callback(GLFWwindow *window, int width, int height)
-{
-    // make sure the viewport matches the new window dimensions; note that width and
-    // height will be significantly larger than specified on retina displays.
-    glViewport(0, 0, width, height);
 }
