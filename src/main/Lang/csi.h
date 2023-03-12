@@ -7,6 +7,6 @@ using namespace chaiscript;
 
 ChaiScript chai;
 
-void InitChaiscript()
+void InitChaiscript();
 
 #endif // !CHAISCRIPT_H
