@@ -37,11 +37,7 @@ int main(int argc, char *argv[])
     luaL_dofile(L, "../Lua/test.lua");
 
     // Initializing Chaiscript
-    chaiscript::ChaiScript chai;
-    chai.eval(R"(
-        puts("Chaiscript initialized.\n");
-        puts("\n");
-    )");
+    InitChaiscript();
 
     /* Initializing the GLFW library. */
     glfwInit();
