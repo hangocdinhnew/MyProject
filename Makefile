@@ -10,4 +10,7 @@ ninja:
 install:
 	@./scripts/install
 
+test:
+	@./scripts/test
+
 .PHONY: all
