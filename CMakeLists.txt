@@ -173,9 +173,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE SndFile::sndfile)
 find_package(freetype CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE freetype)
 
-# Add Unit Testing Framework
-# find_package(Catch2 CONFIG REQUIRED)
-# target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2 Catch2::Catch2WithMain)
+find_package(Catch2 CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2 Catch2::Catch2WithMain)
 
 # find_package(GTest CONFIG REQUIRED)
 # target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
@@ -284,3 +283,5 @@ set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
 set(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/res/ico.icns")
 include(CPack)
 include(InstallRequiredSystemLibraries)
+
+add_subdirectory(tests)

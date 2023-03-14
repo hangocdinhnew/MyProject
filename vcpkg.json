@@ -1,8 +1,5 @@
 {
-	"name": "myproject",
-	"version": "1.0",
-	"dependencies": [
-        "stb",
-		"chaiscript"
-	]
+  "name": "myproject",
+  "version": "1.0",
+  "dependencies": ["stb", "chaiscript"]
 }
