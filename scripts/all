@@ -3,15 +3,26 @@
 set -e
 CORES_COUNT="$(sysctl -n hw.physicalcpu)"
 
-cmake -B build -G "Ninja" -DCMAKE_BUILD_TYPE="Release" -DUSE_DOXYGEN="True" -DUSE_CPPCHECK="True"
+cmake -B build -G "Ninja" -DCMAKE_BUILD_TYPE="Release" -DUSE_DOXYGEN="True" -DUSE_CPPCHECK="True" || {
+    echo "Generating failed! Please check if you edit CMake correctly!"
+}
 # shellcheck disable=SC2164
 cd build
-ninja -j$CORES_COUNT
-cmake --install .
+ninja -j$CORES_COUNT || {
+    echo "Building failed! please check your sdk or if any Linker, Syntax You should fix it in main or you can check the log!"
+    exit 1
+}
+cmake --install . || {
+    echo "Installation failed! Please check if the CMake was installed properly and all libs were installed! Including Lua!"
+    exit 1
+}
 # shellcheck disable=SC2103
 cd ..
 echo ""
 echo "Building done!"
 echo "Entering testing stage...."
 cd build/tests
-ctest -G
+ctest -G || {
+    echo "Testing failed, please make sure that you correctly did all everything correctly and make sure your device has OpenGL framework. If you don't have you might need to reinstall your machine!"
+    exit 1
+}
