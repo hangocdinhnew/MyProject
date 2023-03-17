@@ -48,10 +48,10 @@ int main(int argc, char *argv[])
 
     /* Sound */
     SoundDevice *sd = LISTENER->Get();
-    int Music = SE_LOAD("../Resources/sound1.mp3.mpeg");
-    int Music1 = SE_LOAD("../Resources/music1.mp3");
-    int Egg1 = SE_LOAD("../Resources/egg1.mp3");
-    SoundEffectsPlayer sound_effects_player_forMusic;
+    int Sound1 = SE_LOAD("../Resources/sound1.wav");
+    int Sound2 = SE_LOAD("../Resources/sound2.wav");
+    int Egg1 = SE_LOAD("../Resources/egg1.wav");
+    SoundEffectsPlayer sound_effects_player_forSound;
 
     // Lua
     luaL_dofile(L, "../Lua/main.lua");
@@ -226,7 +226,7 @@ int main(int argc, char *argv[])
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // SD
-    sound_effects_player_forMusic.SetLooping(false);
+    sound_effects_player_forSound.SetLooping(false);
 
     // Prints out the OpenGL version
     std::cout << "" << std::endl;
@@ -386,23 +386,23 @@ int main(int argc, char *argv[])
 
                 ImGui::EndMenu();
             }
-            if (ImGui::BeginMenu("Music"))
+            if (ImGui::BeginMenu("Sound"))
             {
-                if (ImGui::BeginMenu("Music Manager"))
+                if (ImGui::BeginMenu("Sound Manager"))
                 {
                     // music manager
-                    ImGui::BeginPopupModal("Music Manager");
+                    ImGui::BeginPopupModal("Sound Manager");
                     ImGui::BulletText("Sound Looping");
                     ImGui::Text("Use this for more good experience of easter eggs sounds.");
                     if (ImGui::Button("Yes"))
-                        sound_effects_player_forMusic.SetLooping(true);
+                        sound_effects_player_forSound.SetLooping(true);
                     if (ImGui::Button("No"))
-                        sound_effects_player_forMusic.SetLooping(false);
+                        sound_effects_player_forSound.SetLooping(false);
                     ImGui::BulletText("Music List");
-                    if (ImGui::Button("Play music 1"))
-                        sound_effects_player_forMusic.Play(Music);
-                    if (ImGui::Button("Play music 2"))
-                        sound_effects_player_forMusic.Play(Music1);
+                    if (ImGui::Button("Play sound 1"))
+                        sound_effects_player_forSound.Play(Sound1);
+                    if (ImGui::Button("Play sound 2"))
+                        sound_effects_player_forSound.Play(Sound2);
                     ImGui::EndPopup();
                 }
                 ImGui::EndMenu();
@@ -421,7 +421,7 @@ int main(int argc, char *argv[])
                 show_another_window = false;
 
             if (ImGui::Button("SUSSY BUTTON"))
-                sound_effects_player_forMusic.Play(Egg1);
+                sound_effects_player_forSound.Play(Egg1);
 
             ImGui::End();
         }
