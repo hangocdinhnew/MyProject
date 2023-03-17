@@ -51,7 +51,7 @@ endif()
 project(
     MyProject
     LANGUAGES C CXX
-    VERSION 1.9.6
+    VERSION 2.0.0
     DESCRIPTION "The Greatest App Ever"
 )
 
@@ -83,8 +83,9 @@ set_source_files_properties(${MyProject_ICON}
 
 # Set Resources
 file(GLOB_RECURSE RESOURCES_APPEND CONFIGURE_DEPENDS
-    "*.ttf"
-    "*.wav"
+    "res/*.ttf"
+    "res/*.wav"
+    "res/*.xml"
 )
 
 list(APPEND MyProject_Resources_FILES ${RESOURCES_APPEND})
@@ -121,6 +122,13 @@ add_executable(${PROJECT_NAME}
     ${MyProject_SOURCES}
     ${MyProject_LUA_FILES}
 )
+
+set(PLIST_VALUE "uses camera to see vision targets.")
+
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string ${PLIST_VALUE}" ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.app/Contents/Info.plist
+)
+
 set_target_properties(
     ${PROJECT_NAME}
     PROPERTIES
@@ -148,13 +156,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE glad::glad)
 find_package(gl3w CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE unofficial::gl3w::gl3w)
 
-if(INCLUDE_OPENCV)
-    # OpenCV
-    find_package(OpenCV CONFIG REQUIRED)
-    target_link_libraries(${PROJECT_NAME} PRIVATE opencv_ml tegra_hal opencv_dnn opencv_core)
-
-    # OpenCV
-endif()
+# OpenCV
+set(OpenCV_DIR "${VCPKG_INSTALLED_DIR}/arm64-osx/share/opencv4")
+find_package(OpenCV REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
 
 # Add STB
 find_path(STB_INCLUDE_DIRS "stb_c_lexer.h")
@@ -172,8 +177,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE SndFile::sndfile)
 find_package(freetype CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE freetype)
 
-find_package(Catch2 CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2 Catch2::Catch2WithMain)
+# find_package(Catch2 CONFIG REQUIRED)
+# target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2 Catch2::Catch2WithMain)
 
 # find_package(GTest CONFIG REQUIRED)
 # target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
@@ -207,10 +212,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE assimp::assimp)
 find_package(soil CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE soil)
 
+# Add NFD
+find_package(unofficial-nativefiledialog CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE unofficial::nativefiledialog::nfd)
+
 # Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static analytics application" TRUE)
-option(INCLUDE_OPENCV "Include OpenCV" FALSE)
 option(JSON_USE_IMPLICIT_CONVERSIONS "Use implict conversations" ${JSON_USE_IMPLICIT_CONVERSIONS})
 
 if(USE_DOXYGEN)

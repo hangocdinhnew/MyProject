@@ -202,6 +202,13 @@ int main(int argc, char *argv[])
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
 
+    cv::VideoCapture cap;
+    while (!cap.isOpened())
+    {
+        cap.open(0, cv::CAP_ANY);                                    // try to open the camera with any available API
+        std::this_thread::sleep_for(std::chrono::milliseconds(100)); // wait for 100 milliseconds before trying again
+    }
+
     // Load Fonts
     // - If no fonts are loaded, dear imgui will use the default font. You can also load multiple fonts and use ImGui::PushFont()/PopFont() to select them.
     // - AddFontFromFileTTF() will return the ImFont* so you can store it if you need to select the font among multiple.
@@ -223,6 +230,7 @@ int main(int argc, char *argv[])
     bool show_demo_window = true;
     bool show_another_window = false;
     bool show_text_editor = false;
+    bool show_camera_window = true;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // SD
@@ -240,6 +248,29 @@ int main(int argc, char *argv[])
               << "OpenGL Shading Language Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
     std::cout << "" << std::endl;
 
+    // Loop to check camera access status
+    bool camera_access_granted = false;
+    while (!camera_access_granted)
+    {
+        // Check camera access status
+        camera_access_granted = cap.grab();
+
+        // Poll events and swap buffers
+        glfwPollEvents();
+        glfwSwapBuffers(window);
+    }
+
+    // CascadeClassifer
+    cv::CascadeClassifier face_cascade;
+    try
+    {
+        face_cascade.load("../Resources/cascade-opencv.xml");
+    }
+    catch (cv::Exception &e)
+    {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
@@ -256,6 +287,27 @@ int main(int argc, char *argv[])
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
+
+        cv::Mat frame;
+        cap >> frame;
+
+        std::vector<cv::Rect> faces;
+        face_cascade.detectMultiScale(frame, faces);
+
+        // Draw rectangles around the detected faces
+        for (const auto &face : faces)
+        {
+            rectangle(frame, face, cv::Scalar(255, 0, 0), 2);
+        }
+
+        // Convert the OpenCV Mat to an OpenGL texture
+        GLuint textureID;
+        glGenTextures(1, &textureID);
+        glBindTexture(GL_TEXTURE_2D, textureID);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, frame.cols, frame.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, frame.data);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
         if (show_text_editor)
         {
             static TextEditor editor;
@@ -334,6 +386,13 @@ int main(int argc, char *argv[])
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
 
+        if (show_camera_window)
+        {
+            // Display the texture in an ImGui window
+            ImGui::Begin("OpenCV Camera");
+            ImGui::Image((void *)(intptr_t)textureID, ImVec2(frame.cols, frame.rows));
+            ImGui::End();
+        }
         // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
         {
             static float f = 0.0f;
@@ -345,6 +404,7 @@ int main(int argc, char *argv[])
             ImGui::Checkbox("Demo Window", &show_demo_window); // Edit bools storing our window open/close state
             ImGui::Checkbox("Another Window", &show_another_window);
             ImGui::Checkbox("File Editor", &show_text_editor);
+            ImGui::Checkbox("Camera window", &show_camera_window);
 
             ImGui::SliderFloat("float", &f, 0.0f, 1.0f);             // Edit 1 float using a slider from 0.0f to 1.0f
             ImGui::ColorEdit3("clear color", (float *)&clear_color); // Edit 3 floats representing a color
@@ -362,31 +422,28 @@ int main(int argc, char *argv[])
             // File Manager
             if (ImGui::BeginMenu("File"))
             {
-                if (ImGui::BeginMenu("Open"))
+                if (ImGui::MenuItem("Open Music"))
                 {
-                    ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".", 1,
-                                                            nullptr, ImGuiFileDialogFlags_Modal);
-
-                    ImGui::EndMenu();
-                }
-
-                // display
-                if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey"))
-                {
-                    // action if OK
-                    if (ImGuiFileDialog::Instance()->IsOk())
+                    nfdchar_t *outPath;
+                    nfdresult_t result = NFD_OpenDialog(NULL, NULL, &outPath);
+                    if (result == NFD_OKAY)
                     {
-                        std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
-                        std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-                        // action
+                        int ConvertedSP = SE_LOAD(outPath);
+                        sound_effects_player_forSound.Play(ConvertedSP);
                     }
-
-                    // close
-                    ImGuiFileDialog::Instance()->Close();
+                    else if (result == NFD_CANCEL)
+                    {
+                        puts("NFD has being cancelled!");
+                    }
+                    else
+                    {
+                        printf("Error: %s\n", NFD_GetError());
+                    }
                 }
 
                 ImGui::EndMenu();
             }
+
             if (ImGui::BeginMenu("Sound"))
             {
                 if (ImGui::BeginMenu("Sound Manager"))
@@ -437,6 +494,8 @@ int main(int argc, char *argv[])
         glClear(GL_COLOR_BUFFER_BIT);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
+        glDeleteTextures(1, &textureID);
+
         glfwSwapBuffers(window);
     }
 
@@ -449,6 +508,8 @@ int main(int argc, char *argv[])
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
+
+    cap.release();
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------

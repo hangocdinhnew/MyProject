@@ -11,11 +11,8 @@
 # include <GLFW/glfw3native.h>
 # include <imgui.h>
 
-# cmakedefine INCLUDE_OPENCV
-
-# ifdef INCLUDE_OPENCV
 # include <opencv2/opencv.hpp>
-# endif
+# include <opencv2/objdetect.hpp>
 
 # cmakedefine JSON_USE_IMPLICIT_CONVERSIONS
 
@@ -33,7 +30,6 @@
 # include <imgui_impl_opengl3.h>
 # include <imgui_impl_glfw.h>
 # include <imgui_freetype.h>
-# include "../Lib/ImGuiFileDialog/ImGuiFileDialog.h"
 
 # include "../Lib/TextEditor/TextEditor.h"
 # define IMGUI_ENABLE_FREETYPE
@@ -41,3 +37,4 @@
 # include <chaiscript/chaiscript.hpp>
 # include "../Input/processInput.h"
 # include "../Graphics/framebuffer.h"
+# include <nfd.h>

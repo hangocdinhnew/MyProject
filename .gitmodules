@@ -1,7 +1,3 @@
 [submodule "src/main/Lib/TextEditor"]
 	path = src/main/Lib/TextEditor
 	url = https://github.com/BalazsJako/ImGuiColorTextEdit
-[submodule "src/main/Lib/ImGuiFileDialog"]
-	path = src/main/Lib/ImGuiFileDialog
-	url = https://github.com/aiekick/ImGuiFileDialog
-	branch = Lib_Only
