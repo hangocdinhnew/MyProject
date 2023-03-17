@@ -231,6 +231,7 @@ int main(int argc, char *argv[])
     bool show_another_window = false;
     bool show_text_editor = false;
     bool show_camera_window = true;
+    bool enable_camera = true;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // SD
@@ -405,6 +406,26 @@ int main(int argc, char *argv[])
             ImGui::Checkbox("Another Window", &show_another_window);
             ImGui::Checkbox("File Editor", &show_text_editor);
             ImGui::Checkbox("Camera window", &show_camera_window);
+
+            if (ImGui::Checkbox("Enable Camera", &enable_camera))
+            {
+                if (enable_camera)
+                {
+                    if (!cap.isOpened())
+                    {
+                        cap.open(0);
+                        if (!cap.isOpened())
+                        {
+                            printf("Failed to open camera.\n");
+                            enable_camera = false;
+                        }
+                    }
+                }
+                else
+                {
+                    cap.release();
+                }
+            }
 
             ImGui::SliderFloat("float", &f, 0.0f, 1.0f);             // Edit 1 float using a slider from 0.0f to 1.0f
             ImGui::ColorEdit3("clear color", (float *)&clear_color); // Edit 3 floats representing a color
