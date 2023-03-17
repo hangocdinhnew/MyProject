@@ -366,6 +366,7 @@ int main(int argc, char *argv[])
                 {
                     ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".", 1,
                                                             nullptr, ImGuiFileDialogFlags_Modal);
+
                     ImGui::EndMenu();
                 }
 
