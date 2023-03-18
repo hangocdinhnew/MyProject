@@ -1,5 +1,4 @@
 name: MyProject C++ Build
-uses: uraimo/run-on-arch-action@v2.5.0
 
 on:
   push:
@@ -10,12 +9,15 @@ on:
 jobs:
   build:
     runs-on: macos-latest
-    arch: aarch64
     strategy:
       matrix:
         os: [macos-latest]
         arch: [arm64]
     steps:
+      - name: Run on Architecture
+        uses: uraimo/run-on-arch-action@v2.5.0
+        with:
+          arch: aarch64
       - name: Install brew packages
         run: |
           brew update
