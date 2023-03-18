@@ -11,9 +11,9 @@ jobs:
     runs-on: macos-13.0
     strategy:
       matrix:
-        include:
-          - arch: arm64
-            brew_packages: "cmake ninja make lua"
+        os: [macos-13.0]
+        arch: [arm64]
+        brew_packages: ["cmake", "ninja", "make", "lua"]
     steps:
       - name: Install brew packages
         run: |
@@ -26,7 +26,7 @@ jobs:
           ./bootstrap-vcpkg.sh
           ./vcpkg integrate install
           ./vcpkg install glfw3 imgui imgui[opengl3-binding,glfw-binding,freetype] glad gl3w stb openal-soft libsndfile freetype lua zstd 7zip sol2 nlohmann-json assimp soil opencv nativefiledialog gtest
-      - name: Configure, build and test
+      - name: Configure and build
         run: |
           cd ${{ github.workspace }}
           make
