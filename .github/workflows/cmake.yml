@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-13.0
     strategy:
       matrix:
-        os: [macos-13.0]
+        os: [macos-latest]
         arch: [arm64]
         brew_packages: ["cmake", "ninja", "make", "lua"]
     steps:
