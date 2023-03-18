@@ -10,4 +10,7 @@ ninja:
 install:
 	@./scripts/install
 
+clangd:
+	@./scripts/clangd
+	
 .PHONY: all
