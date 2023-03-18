@@ -13,12 +13,11 @@ jobs:
       matrix:
         os: [macos-latest]
         arch: [arm64]
-        brew_packages: ["cmake", "ninja", "make", "lua"]
     steps:
       - name: Install brew packages
         run: |
           brew update
-          brew install ${{ matrix.brew_packages }}
+          brew install cmake ninja make lua
       - name: Install vcpkg
         run: |
           git clone https://github.com/Microsoft/vcpkg.git
