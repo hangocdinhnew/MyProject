@@ -1,0 +1,32 @@
+name: C++ Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: macos-13.0
+    strategy:
+      matrix:
+        include:
+          - arch: arm64
+            brew_packages: "cmake ninja make lua"
+    steps:
+      - name: Install brew packages
+        run: |
+          brew update
+          brew install ${{ matrix.brew_packages }}
+      - name: Install vcpkg
+        run: |
+          git clone https://github.com/Microsoft/vcpkg.git
+          cd vcpkg
+          ./bootstrap-vcpkg.sh
+          ./vcpkg integrate install
+          ./vcpkg install glfw3 imgui imgui[opengl3-binding,glfw-binding,freetype] glad gl3w stb openal-soft libsndfile freetype lua zstd 7zip sol2 nlohmann-json assimp soil opencv nativefiledialog gtest
+      - name: Configure, build and test
+        run: |
+          cd ${{ github.workspace }}
+          make
