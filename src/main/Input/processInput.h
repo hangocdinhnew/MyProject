@@ -1,7 +1,7 @@
 #ifndef INPUT_CALLBACK_H
 #define INPUT_CALLBACK_H
 
-#include "../Config/MPConfig.h"
+#include <GLFW/glfw3.h>
 
 void processInput(GLFWwindow *window);
 
