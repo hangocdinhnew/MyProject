@@ -125,9 +125,19 @@ add_executable(${PROJECT_NAME}
 
 set(PLIST_VALUE "uses camera to see vision targets.")
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string ${PLIST_VALUE}" ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.app/Contents/Info.plist
-)
+# Set the flag variable name and initial value
+set(COMMAND_RUN_ONCE_FLAG "command_run_once_flag" CACHE INTERNAL "Flag to track whether custom command has run once" FORCE)
+set(COMMAND_RUN_ONCE_FLAG_DEFAULT OFF)
+
+# Add the custom command to update the Info.plist file, but only run it once
+if(NOT ${COMMAND_RUN_ONCE_FLAG})
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string ${PLIST_VALUE}" ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.app/Contents/Info.plist
+    )
+
+    # Set the flag to indicate that the command has been run
+    set(${COMMAND_RUN_ONCE_FLAG} ON CACHE BOOL "Flag to track whether custom command has run once" FORCE)
+endif()
 
 set_target_properties(
     ${PROJECT_NAME}
