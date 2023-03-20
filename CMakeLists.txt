@@ -226,6 +226,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE soil)
 find_package(unofficial-nativefiledialog CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE unofficial::nativefiledialog::nfd)
 
+# Add GLSL
+find_package(glslang CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE glslang::OSDependent glslang::glslang glslang::MachineIndependent glslang::GenericCodeGen glslang::OGLCompiler glslang::glslangValidator glslang::spirv-remap glslang::glslang-default-resource-limits glslang::SPVRemapper glslang::SPIRV glslang::HLSL)
+
 # Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static analytics application" TRUE)
