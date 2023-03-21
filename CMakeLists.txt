@@ -60,7 +60,7 @@ set(MyProject_DIR_ROOT ${CMAKE_CURRENT_LIST_DIR})
 set(MyProject_DIR_SRC "${MyProject_DIR_ROOT}/src")
 set(MyProject_DIR_RES "${MyProject_DIR_ROOT}/res")
 set(MyProject_BundleApp_ResourcesDir "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.app/Contents/Resources/")
-set(MyProject_SRC_CFG_DIR ${MyProject_DIR_SRC}/main/Config/)
+set(MyProject_SRC_CFG_DIR "${MyProject_DIR_SRC}/main/Config/")
 set(MyProject_CFG_APPEND
     ${MyProject_SRC_CFG_DIR}/MPConfig.h.cmake
     ${MyProject_SRC_CFG_DIR}/MPConfig.h
