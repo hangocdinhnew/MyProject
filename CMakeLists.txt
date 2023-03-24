@@ -110,6 +110,7 @@ endmacro()
 # ADD SOURCES
 macro(MyProject_SOURCES_APPEND)
     MyProject_FILES_APPEND(${ARGV0}/*.h)
+    MyProject_FILES_APPEND(${ARGV0}/*.hpp)
     MyProject_FILES_APPEND(${ARGV0}/*.cpp)
 endmacro()
 
