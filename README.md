@@ -1,5 +1,9 @@
 # MyProject
 
+## Note:
+
+This is C++-17 branch so Please use the main branch instead!
+
 [![banner](https://user-images.githubusercontent.com/114002226/213379441-74cea420-42bf-4512-9c38-5f5c4ab4229d.png)](https://github.com/HangocdinhNewOrganization/MyProject)
 
 ```cpp
@@ -47,7 +51,3 @@ int main()
 
 #### Demo Screenshots:
 <img width="1552" alt="Screenshot 2023-01-08 at 13 42 43" src="https://user-images.githubusercontent.com/114002226/211183938-56d46321-9de2-4649-a038-1f8f4fcd11ff.png">
-
-#### NOTE FOR C++-17 BRANCH
-
-YOU NEED TO CONFIG THIS FOR THE DEMO WORKS THIS IS SHOULD NOT BE USED!
