@@ -40,13 +40,6 @@ int main(int argc, char *argv[]) {
   luaL_openlibs(L);
   luaL_dofile(L, "../Lua/test.lua");
 
-  // Initializing Chaiscript
-  chaiscript::ChaiScript chai;
-  chai.eval(R"(
-        puts("Chaiscript initialized.\n");
-        puts("\n");
-    )");
-
   /* Initializing the GLFW library. */
   glfwInit();
 
@@ -211,8 +204,6 @@ int main(int argc, char *argv[]) {
   cv::VideoCapture cap;
   while (!cap.isOpened()) {
     cap.open(0, cv::CAP_ANY); // try to open the camera with any available API
-    std::this_thread::sleep_for(std::chrono::milliseconds(
-        100)); // wait for 100 milliseconds before trying again
   }
 
   // Load Fonts

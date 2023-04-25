@@ -34,7 +34,6 @@
 # include "../Lib/TextEditor/TextEditor.h"
 # define IMGUI_ENABLE_FREETYPE
 # include "../Lua/LuaInc.h"
-# include <chaiscript/chaiscript.hpp>
 # include "../Input/processInput.h"
 # include "../Graphics/framebuffer.h"
 # include <nfd.h>
