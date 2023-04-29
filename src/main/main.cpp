@@ -455,8 +455,6 @@ int main(int argc, char *argv[]) {
           // music manager
           ImGui::BeginPopupModal("Sound Manager");
           ImGui::BulletText("Sound Looping");
-          ImGui::Text(
-              "Use this for more good experience of easter eggs sounds.");
           if (ImGui::Button("Yes"))
             sound_effects_player_forSound.SetLooping(true);
           if (ImGui::Button("No"))
