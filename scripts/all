@@ -8,7 +8,7 @@ cmake -B build -G "Ninja" -DCMAKE_BUILD_TYPE="Release" -DUSE_DOXYGEN="True" -DUS
 }
 # shellcheck disable=SC2164
 cd build
-ninja -j$CORES_COUNT || {
+ccache ninja -j$CORES_COUNT || {
     echo "Building failed! please check your sdk or if any Linker, Syntax You should fix it in main or you can check the log!"
     exit 1
 }

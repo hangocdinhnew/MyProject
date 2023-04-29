@@ -40,13 +40,6 @@ int main(int argc, char *argv[]) {
   luaL_openlibs(L);
   luaL_dofile(L, "../Lua/test.lua");
 
-  // Initializing Chaiscript
-  chaiscript::ChaiScript chai;
-  chai.eval(R"(
-        puts("Chaiscript initialized.\n");
-        puts("\n");
-    )");
-
   /* Initializing the GLFW library. */
   glfwInit();
 
@@ -60,28 +53,12 @@ int main(int argc, char *argv[]) {
   // Lua
   luaL_dofile(L, "../Lua/main.lua");
 
-/* Setting the version of OpenGL to use. */
-#if defined(IMGUI_IMPL_OPENGL_ES2)
-  // GL ES 2.0 + GLSL 100
-  const char *glsl_version = "#version 100";
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-  glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
-#elif defined(__APPLE__)
   // GL 3.2 + GLSL 150
   const char *glsl_version = "#version 150";
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // 3.2+ only
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);           // Required on Mac
-#else
-  // GL 3.0 + GLSL 130
-  const char *glsl_version = "#version 130";
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-  // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // 3.2+
-  // only glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // 3.0+ only
-#endif
 
   /* Creating a window with the title "MyApp" and the dimensions of SCR_WIDTH
    * and SCR_HEIGHT. */
@@ -211,8 +188,6 @@ int main(int argc, char *argv[]) {
   cv::VideoCapture cap;
   while (!cap.isOpened()) {
     cap.open(0, cv::CAP_ANY); // try to open the camera with any available API
-    std::this_thread::sleep_for(std::chrono::milliseconds(
-        100)); // wait for 100 milliseconds before trying again
   }
 
   // Load Fonts
@@ -480,8 +455,6 @@ int main(int argc, char *argv[]) {
           // music manager
           ImGui::BeginPopupModal("Sound Manager");
           ImGui::BulletText("Sound Looping");
-          ImGui::Text(
-              "Use this for more good experience of easter eggs sounds.");
           if (ImGui::Button("Yes"))
             sound_effects_player_forSound.SetLooping(true);
           if (ImGui::Button("No"))

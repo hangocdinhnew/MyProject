@@ -3,5 +3,5 @@
 CORES_COUNT="$(sysctl -n hw.physicalcpu)"
 
 cd build;
-ninja -j$CORES_COUNT;
+ccache ninja -j$CORES_COUNT;
 cd ..

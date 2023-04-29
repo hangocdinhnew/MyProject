@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20.0)
 
-# Set Generator and build type
+# Set Generator and build type etc
 if(CMAKE_BUILD_TYPE MATCHES Release)
     set(CMAKE_CXX_FLAGS "-O3")
 elseif(CMAKE_BUILD_TYPE MATCHES Trace)
@@ -12,7 +12,7 @@ endif()
 
 # Toolchain, CXX Standard Flags and Build Type
 set(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}")
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options(${CMAKE_CXX_FLAGS})
 set(compile_flags "
@@ -130,15 +130,9 @@ set(PLIST_VALUE "uses camera to see vision targets.")
 set(COMMAND_RUN_ONCE_FLAG "command_run_once_flag" CACHE INTERNAL "Flag to track whether custom command has run once" FORCE)
 set(COMMAND_RUN_ONCE_FLAG_DEFAULT OFF)
 
-# Add the custom command to update the Info.plist file, but only run it once
-if(NOT ${COMMAND_RUN_ONCE_FLAG})
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string ${PLIST_VALUE}" ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.app/Contents/Info.plist
-    )
-
-    # Set the flag to indicate that the command has been run
-    set(${COMMAND_RUN_ONCE_FLAG} ON CACHE BOOL "Flag to track whether custom command has run once" FORCE)
-endif()
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string ${PLIST_VALUE}" ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.app/Contents/Info.plist
+)
 
 set_target_properties(
     ${PROJECT_NAME}
