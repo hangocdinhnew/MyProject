@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+set -e
+CORES_COUNT="$(sysctl -n hw.physicalcpu)"
+
+echo "WARNING: You are running debug, Performance may not be high so only use debug for setting breakpoints and test"
+
+cmake -B build -G "Ninja" -DCMAKE_BUILD_TYPE="Debug" -DUSE_DOXYGEN="True" -DUSE_CPPCHECK="True" || {
+    echo "Generating failed! Please check if you edit CMake correctly!"
+}
+# shellcheck disable=SC2164
+cd build
+ccache ninja -j$CORES_COUNT || {
+    echo "Building failed! please check your sdk or if any Linker, Syntax You should fix it in main or you can check the log!"
+    exit 1
+}
+echo ""
+echo "Building done!"
+echo ""
+echo "Entering Installation stage...."
+cmake --install . || {
+    echo "Installation failed! Please check if the CMake was installed properly and all libs were installed! Including Lua!"
+    exit 1
+}
+echo ""
+echo "Installation done!"
+# shellcheck disable=SC2103
+cd ..
+echo "Entering testing stage...."
+cd build/tests
+ctest -G || {
+    echo "Testing failed, please make sure that you correctly did all everything correctly and make sure your device has OpenGL framework. If you don't have you might need to reinstall your machine!"
+    exit 1
+}
+echo ""
+echo "Done testing!"
+echo ""
+echo "Wow this project has done building, installing and testing! Now you can testing your app or the demo Enjoy!"

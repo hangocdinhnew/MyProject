@@ -1,6 +1,9 @@
 all:
 	@./scripts/all
 
+debug:
+	@./scripts/debug
+
 cmake: 
 	@./scripts/cmake
 
