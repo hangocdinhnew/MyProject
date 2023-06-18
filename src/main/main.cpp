@@ -407,10 +407,14 @@ int main() {
     glfwSwapBuffers(window);
   }
 
+  // Shutdown Imgui implementation and destroy imgui context.
+  // ------------------------------------------------------------------
   ImGui_ImplOpenGL3_Shutdown();
   ImGui_ImplGlfw_Shutdown();
   ImGui::DestroyContext();
 
+  // Release opencv video capture.
+  // ------------------------------------------------------------------
   cap.release();
 
   // glfw: terminate, clearing all previously allocated GLFW resources.
