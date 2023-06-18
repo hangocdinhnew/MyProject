@@ -51,8 +51,8 @@ endif()
 project(
     MyProject
     LANGUAGES C CXX
-    VERSION 2.0.0
-    DESCRIPTION "The Greatest App Ever"
+    VERSION 2.0.1
+    DESCRIPTION "The Template that the most effort is put in it"
 )
 
 # ADD SOURCES
