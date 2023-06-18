@@ -8,10 +8,8 @@ const unsigned int SCR_HEIGHT = 1080;
 /**
  * The main function.
  *
- * @param argc the number of arguments passed to the program
- * @param argv the array of strings that are the command line arguments
  */
-int main(int argc, char *argv[]) {
+int main() {
   /* Printing the version of the project. */
   std::cout << "Version: " << MyProject_VERSION_MAJOR << "."
             << MyProject_VERSION_MINOR << "." << MyProject_VERSION_PATCH;
@@ -34,7 +32,7 @@ int main(int argc, char *argv[]) {
   // Lua
   luaL_dofile(L, "../Lua/main.lua");
 
-  // GL 3.2 + GLSL 150
+  // Set GL version 3.2 and GLSL version 150
   const char *glsl_version = "#version 150";
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
@@ -83,9 +81,8 @@ int main(int argc, char *argv[]) {
   // Keyboard Controls io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad; //
   // Enable Gamepad Controls
 
-  // Setup Dear ImGui style
+  // Default Dear ImGui style
   ImGui::StyleColorsDark();
-  // ImGui::StyleColorsLight();
 
   // Setup Platform/Renderer backends
   ImGui_ImplGlfw_InitForOpenGL(window, true);
