@@ -1,10 +1,6 @@
 /* Including the header file MPConfig.h. */
 #include "Config/MPConfig.h"
 
-/* Defining the width and height of the screen. */
-const unsigned int SCR_WIDTH = 1920;
-const unsigned int SCR_HEIGHT = 1080;
-
 /**
  * The main function.
  *

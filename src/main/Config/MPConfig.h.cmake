@@ -37,3 +37,4 @@
 # include "../Input/processInput.h"
 # include "../Graphics/framebuffer.h"
 # include <nfd.h>
+# include "../Graphics/screenattr.h"
