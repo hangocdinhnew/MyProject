@@ -3,6 +3,7 @@
 # define MyProject_VERSION_PATCH @MyProject_VERSION_PATCH@
 
 # include <iostream>
+# include <cstring>
 # include <vector>
 # include <cstdio>
 # include <glad/glad.h>
