@@ -1,26 +1,23 @@
-
-
 #pragma once
 #include <AL/al.h>
 
-class SoundEffectsPlayer
-{
+class SoundEffectsPlayer {
 public:
-	SoundEffectsPlayer();
-	~SoundEffectsPlayer();
+  SoundEffectsPlayer();
+  ~SoundEffectsPlayer();
 
-	void Play(const ALuint& buffer_to_play);
-	void Stop();
-	void Pause();
-	void Resume();
+  void Play(const ALuint &buffer_to_play);
+  void Stop();
+  void Pause();
+  void Resume();
 
-	void SetBufferToPlay(const ALuint& buffer_to_play);
-	void SetLooping(const bool& loop);
-	void SetPosition(const float& x, const float& y, const float& z);
+  void SetBufferToPlay(const ALuint &buffer_to_play);
+  void SetLooping(const bool &loop);
+  void SetPosition(const float &x, const float &y, const float &z);
 
-	bool isPlaying();
+  bool isPlaying();
 
 private:
-	ALuint p_Source;
-	ALuint p_Buffer = 0;
+  ALuint p_Source;
+  ALuint p_Buffer = 0;
 };

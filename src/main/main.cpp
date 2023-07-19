@@ -8,7 +8,8 @@
 int main() {
   /* Printing the version of the project. */
   std::cout << "Version: " << MyProject_VERSION_MAJOR << "."
-            << MyProject_VERSION_MINOR << "." << MyProject_VERSION_PATCH;
+            << MyProject_VERSION_MINOR << "." << MyProject_VERSION_PATCH
+            << "\n";
 
   /* Creating a new lua state, opening the standard libraries, and then loading
    * the file test.lua. */
