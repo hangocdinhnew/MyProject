@@ -1,5 +1,6 @@
 /* Including the header file MPConfig.h. */
 #include "Config/MPConfig.h"
+#include "Verbose/verbose.h"
 
 /**
  * The main function.
@@ -69,6 +70,8 @@ int main() {
   if (!gl3wIsSupported(3, 3))
     return 4;
 
+  PrintGLVerbose();
+
   // Setup Dear ImGui context
   IMGUI_CHECKVERSION();
   ImGui::CreateContext();
@@ -126,19 +129,6 @@ int main() {
 
   // SD
   sound_effects_player_forSound.SetLooping(false);
-
-  // Prints out the OpenGL version
-  std::cout << "" << std::endl;
-  std::cout << ""
-            << "OpenGL Vendor: " << glGetString(GL_VENDOR) << std::endl;
-  std::cout << ""
-            << "OpenGL Renderer: " << glGetString(GL_RENDERER) << std::endl;
-  std::cout << ""
-            << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
-  std::cout << ""
-            << "OpenGL Shading Language Version: "
-            << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
-  std::cout << "" << std::endl;
 
   // Loop to check camera access status
   bool camera_access_granted = false;

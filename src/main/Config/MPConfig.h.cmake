@@ -39,3 +39,4 @@
 # include "../Graphics/framebuffer.h"
 # include <nfd.h>
 # include "../Graphics/screenattr.h"
+# include "../Verbose/verbose.h"
