@@ -1,6 +1,5 @@
 /* Including the header file MPConfig.h. */
 #include "Config/MPConfig.h"
-#include "Verbose/verbose.h"
 
 /**
  * The main function.
