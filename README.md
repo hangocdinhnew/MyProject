@@ -46,9 +46,13 @@ int main()
 
 #### Now for the Credits section:
 Special thanks to Khronos Group for creating OpenGL
+
 Special thanks to Apple for making the OpenGL always translated to Metal and not remove OpenGL.framework folder
+
 Thanks GLFW team for making library for creating Vulkan or OpenGL window
+
 Thanks to ocournut for creating Imgui to make the window doesn't look like ass
+
 and so much more people for making this project even possible.
 
 #### Demo Screenshots:
