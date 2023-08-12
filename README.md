@@ -41,7 +41,6 @@ int main()
 - [ ] Make a finished editor.
 - [x] Use ImGui and OpenGL.
 - [x] Add License.
-- [x] Adding support for Jetbrains IDE.
 - [x] Support for VScode.
 - [x] Support OpenAL-Software.
 
