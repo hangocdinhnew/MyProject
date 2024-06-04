@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 
 # Set Generator and build type etc
 if(CMAKE_BUILD_TYPE MATCHES Release)
-    set(CMAKE_CXX_FLAGS "-O3")
+  set(CMAKE_CXX_FLAGS "-O3")
 elseif(CMAKE_BUILD_TYPE MATCHES Trace)
-    set(CMAKE_CXX_FLAGS "-O3")
-    add_compile_definitions(ENABLE_TRACING)
+  set(CMAKE_CXX_FLAGS "-O3")
+  add_compile_definitions(ENABLE_TRACING)
 elseif(CMAKE_BUILD_TYPE MATCHES Debug)
-    set(CMAKE_CXX_FLAGS "-g")
+  set(CMAKE_CXX_FLAGS "-g")
 endif()
 
 # Toolchain, CXX Standard Flags and Build Type
@@ -32,19 +32,19 @@ message(STATUS "")
 find_package(Git QUIET)
 
 if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
-    # Update submodules as needed
-    option(GIT_SUBMODULE "Check submodules during build" ON)
+  # Update submodules as needed
+  option(GIT_SUBMODULE "Check submodules during build" ON)
 
-    if(GIT_SUBMODULE)
-        message(STATUS "Submodule update")
-        execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+  if(GIT_SUBMODULE)
+    message(STATUS "Submodule update")
+    execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
             RESULT_VARIABLE GIT_SUBMOD_RESULT)
 
-        if(NOT GIT_SUBMOD_RESULT EQUAL "0")
-            message(FATAL_ERROR "git submodule update --init failed with ${GIT_SUBMOD_RESULT}, please checkout submodules")
-        endif()
+    if(NOT GIT_SUBMOD_RESULT EQUAL "0")
+      message(FATAL_ERROR "git submodule update --init failed with ${GIT_SUBMOD_RESULT}, please checkout submodules")
     endif()
+  endif()
 endif()
 
 # Set Project Name and Version
@@ -103,15 +103,15 @@ set_source_files_properties(${MyProject_LUA_FILES}
 
 # ADD FILES_APPEND
 macro(MyProject_FILES_APPEND)
-    file(GLOB_RECURSE FILES_APPEND CONFIGURE_DEPENDS ${ARGV})
-    list(APPEND MyProject_SOURCES ${FILES_APPEND})
+  file(GLOB_RECURSE FILES_APPEND CONFIGURE_DEPENDS ${ARGV})
+  list(APPEND MyProject_SOURCES ${FILES_APPEND})
 endmacro()
 
 # ADD SOURCES
 macro(MyProject_SOURCES_APPEND)
-    MyProject_FILES_APPEND(${ARGV0}/*.h)
-    MyProject_FILES_APPEND(${ARGV0}/*.hpp)
-    MyProject_FILES_APPEND(${ARGV0}/*.cpp)
+  MyProject_FILES_APPEND(${ARGV0}/*.h)
+  MyProject_FILES_APPEND(${ARGV0}/*.hpp)
+  MyProject_FILES_APPEND(${ARGV0}/*.cpp)
 endmacro()
 
 # Set the project folder you can use GLOB to manually do it but it's not very automatically tho
@@ -217,50 +217,54 @@ target_link_libraries(${PROJECT_NAME} PRIVATE soil)
 find_package(unofficial-nativefiledialog CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE unofficial::nativefiledialog::nfd)
 
+# Add ZLIB
+find_package(ZLIB REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE ZLIB::ZLIB)
+
 # Options
 option(USE_DOXYGEN "Use Build Documentation" ${USE_DOXYGEN})
 option(USE_CPPCHECK "Use Static analytics application" TRUE)
 option(JSON_USE_IMPLICIT_CONVERSIONS "Use implict conversations" ${JSON_USE_IMPLICIT_CONVERSIONS})
 
 if(USE_DOXYGEN)
-    if(CMAKE_BUILD_TYPE MATCHES "Release")
-        find_package(Doxygen)
+  if(CMAKE_BUILD_TYPE MATCHES "Release")
+    find_package(Doxygen)
 
-        if(DOXYGEN_FOUND)
-            # set input and output files
-            set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.in)
-            set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+    if(DOXYGEN_FOUND)
+      # set input and output files
+      set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.in)
+      set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
 
-            # request to configure the file
-            configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
-            message("Doxygen build started")
+      # request to configure the file
+      configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+      message("Doxygen build started")
 
-            # note the option ALL which allows to build the docs together with the application
-            add_custom_target(doc_doxygen ALL
+      # note the option ALL which allows to build the docs together with the application
+      add_custom_target(doc_doxygen ALL
                 COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
                 WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
                 COMMENT "Generating API documentation with Doxygen"
                 VERBATIM)
-        else(DOXYGEN_FOUND)
-            message("Doxygen need to be installed to generate the doxygen documentation")
-        endif(DOXYGEN_FOUND)
-    endif()
+    else(DOXYGEN_FOUND)
+      message("Doxygen need to be installed to generate the doxygen documentation")
+    endif(DOXYGEN_FOUND)
+  endif()
 endif()
 
 if(USE_CPPCHECK)
-    if(CMAKE_BUILD_TYPE MATCHES "Release")
-        find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
+  if(CMAKE_BUILD_TYPE MATCHES "Release")
+    find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
 
-        if(CMAKE_CXX_CPPCHECK)
-            list(
+    if(CMAKE_CXX_CPPCHECK)
+      list(
                 APPEND CMAKE_CXX_CPPCHECK
                 "--enable=warning"
                 "--inconclusive"
                 "--force"
                 "--inline-suppr"
             )
-        endif()
     endif()
+  endif()
 endif()
 
 set(DIRS "${CMAKE_CURRENT_BINARY_DIR}")
