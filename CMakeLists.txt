@@ -8,6 +8,7 @@ elseif(CMAKE_BUILD_TYPE MATCHES Trace)
   add_compile_definitions(ENABLE_TRACING)
 elseif(CMAKE_BUILD_TYPE MATCHES Debug)
   set(CMAKE_CXX_FLAGS "-g")
+  set(CMAKE_EXPORT_COMPILE_COMMANDS "1")
 endif()
 
 # Toolchain, CXX Standard Flags and Build Type

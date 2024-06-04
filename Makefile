@@ -13,7 +13,7 @@ ninja:
 install:
 	@./scripts/install
 
-clangd:
-	@./scripts/clangd
-	
+alldebug:
+	@./scripts/alldebug
+
 .PHONY: all
