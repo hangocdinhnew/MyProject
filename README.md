@@ -9,7 +9,7 @@ int main()
 {
   std::cout << "Hello!";
 
-  return 0;    
+  return 0;
 }
 ```
 
@@ -44,7 +44,8 @@ int main()
 - [x] Support for VScode.
 - [x] Support OpenAL-Software.
 
-#### Now for the Credits section:
+#### Now for the Credits section
+
 Special thanks to Khronos Group for creating OpenGL
 
 Special thanks to Apple for making the OpenGL always translated to Metal and not remove OpenGL.framework folder
@@ -55,5 +56,10 @@ Thanks to ocournut for creating Imgui to make the window doesn't look like ass
 
 and so much more people for making this project even possible.
 
-#### Demo Screenshots:
+#### Status
+
+Migrated to a private Gitea, I will synchronize every changes, I want to self-host the repo myself, for somethings, so strap in for new changes which probably is none at all.
+
+#### Demo Screenshots
+
 <img width="1552" alt="Screenshot 2023-01-08 at 13 42 43" src="https://user-images.githubusercontent.com/114002226/211183938-56d46321-9de2-4649-a038-1f8f4fcd11ff.png">
